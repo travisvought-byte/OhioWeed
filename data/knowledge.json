@@ -1,0 +1,421 @@
+{
+  "reviewed_on": "2026-10-10",
+  "sources": [
+    {
+      "id": "nih",
+      "title": "NIH / NCCIH: cannabis and cannabinoids",
+      "url": "https://www.nccih.nih.gov/health/cannabis-marijuana-and-cannabinoids-what-you-need-to-know"
+    },
+    {
+      "id": "forms",
+      "title": "Health Canada: about cannabis",
+      "url": "https://www.canada.ca/en/health-canada/services/drugs-medication/cannabis/about.html"
+    },
+    {
+      "id": "oral",
+      "title": "Health Canada: using a cannabis product",
+      "url": "https://www.canada.ca/en/health-canada/topics/accessing-cannabis-for-medical-purposes/cannabis-medical-purposes/using-cannabis-product.html"
+    },
+    {
+      "id": "safety",
+      "title": "Health Canada: consumer information",
+      "url": "https://www.canada.ca/en/health-canada/services/drugs-medication/cannabis/laws-regulations/regulations-support-cannabis-act/consumer-information.html"
+    },
+    {
+      "id": "cdc",
+      "title": "CDC: cannabis and poisoning",
+      "url": "https://www.cdc.gov/cannabis/health-effects/poisoning.html"
+    },
+    {
+      "id": "ohio",
+      "title": "Ohio: packaging and labeling, effective September 11, 2026",
+      "url": "https://codes.ohio.gov/ohio-administrative-code/rule-1301:18-4-20"
+    },
+    {
+      "id": "coa",
+      "title": "SC Labs: understand your certificate of analysis",
+      "url": "https://www.sclabs.com/resources/understand-your-coa/"
+    },
+    {
+      "id": "lab",
+      "title": "SC Labs: test panel details",
+      "url": "https://www.sclabs.com/resources/test-panel-details/"
+    },
+    {
+      "id": "rosin",
+      "title": "Verano: solventless extracts (producer explanation)",
+      "url": "https://verano.com/on-the-rocks-extracts/"
+    },
+    {
+      "id": "resin",
+      "title": "Cresco: concentrates (producer explanation)",
+      "url": "https://www.crescocannabis.com/products/concentrates"
+    },
+    {
+      "id": "orc-928-01",
+      "title": "Ohio Revised Code 928.01 (hemp definitions, effective March 20, 2026)",
+      "url": "https://codes.ohio.gov/ohio-revised-code/section-928.01"
+    },
+    {
+      "id": "dcc-hemp-ban",
+      "title": "Ohio Division of Cannabis Control: intoxicating hemp ban now in effect (March 24, 2026)",
+      "url": "https://com.ohio.gov/about-us/media-center/news/intoxicating-hemp-ban-in-effect"
+    },
+    {
+      "id": "lsc-sb56",
+      "title": "Ohio Legislative Service Commission: SB 56 final analysis",
+      "url": "https://www.legislature.ohio.gov/download?key=27450"
+    },
+    {
+      "id": "hr6500-2019",
+      "title": "H.R. 6500 (P.L. 119-103), sec. 2019: federal hemp date change",
+      "url": "https://www.govinfo.gov/content/pkg/BILLS-119hr6500eas/html/BILLS-119hr6500eas.htm"
+    },
+    {
+      "id": "crs-lsb11496",
+      "title": "Congressional Research Service LSB11496: delay in changes to the hemp definition (Oct. 28, 2026)",
+      "url": "https://www.everycrsreport.com/files/2026-10-28_LSB11496_2a4809149da4fb31c7c2e387e239a244e0e80157.html"
+    },
+    {
+      "id": "dcc-map",
+      "title": "Ohio Division of Cannabis Control: licensed dispensary map",
+      "url": "https://com.ohio.gov/divisions-and-programs/cannabis-control/about-dcc/licenses/what-we-do/cannabis-dispensary-map"
+    }
+  ],
+  "sections": [
+    {
+      "id": "definitions",
+      "title": "Cannabis words, explained",
+      "lead": "Start here when a label or menu uses an unfamiliar term.",
+      "items": [
+        {
+          "id": "cannabis",
+          "title": "Cannabis / cannabinoids",
+          "text": "Cannabis is the plant. Cannabinoids are compounds it produces, including THC and CBD. A product name alone does not tell you its chemical contents.",
+          "sources": [
+            "nih"
+          ]
+        },
+        {
+          "id": "thc",
+          "title": "THC and CBD",
+          "text": "THC is the main intoxicating cannabinoid. CBD does not cause the same high, but it can still have side effects and interact with medications. CBD on a label does not mean risk-free.",
+          "sources": [
+            "nih"
+          ]
+        },
+        {
+          "id": "thca",
+          "title": "THCA / decarboxylation",
+          "text": "THCA is an acidic precursor to THC. Heating can convert it into THC through decarboxylation. A laboratory may report both measured THC and calculated potential total THC; these describe chemistry, not the amount a person absorbs.",
+          "sources": [
+            "lab"
+          ]
+        },
+        {
+          "id": "terpenes",
+          "title": "Terpenes",
+          "text": "Aromatic compounds measured in cannabis testing. Use a batch report to see which are present; a flavor description on a strain page is not a measurement of your product.",
+          "sources": [
+            "lab"
+          ]
+        },
+        {
+          "id": "trichomes",
+          "title": "Trichomes",
+          "text": "Small resin-producing structures on the plant. Separating this resin is the basis of products such as kief and hash.",
+          "sources": [
+            "forms"
+          ]
+        },
+        {
+          "id": "strain",
+          "title": "Strain / cultivar / genetics",
+          "text": "A strain name identifies a marketed variety or lineage. Our strain library separates source claims and flags conflicting ancestry. Use it for background, then check the exact product and batch you are buying.",
+          "sources": []
+        },
+        {
+          "id": "effects",
+          "title": "Indica, sativa and hybrid",
+          "text": "These are the type labels recorded in our strain profiles. The effects tags are reader reports, not a prediction for every person or product. Compare actual ingredients and batch chemistry rather than treating a name as a guarantee.",
+          "sources": []
+        }
+      ]
+    },
+    {
+      "id": "forms",
+      "title": "What form are you buying?",
+      "lead": "The form describes the finished product. The extraction name describes how its cannabis ingredient was made.",
+      "items": [
+        {
+          "id": "flower",
+          "title": "Flower and pre-rolls",
+          "text": "Flower is dried cannabis plant material, commonly sold as buds. A pre-roll packages plant material for smoking. For an infused pre-roll, ask what extract or other ingredients were added; check the product ingredient list.",
+          "sources": [
+            "forms",
+            "ohio"
+          ]
+        },
+        {
+          "id": "edibles",
+          "title": "Edibles and beverages",
+          "text": "Foods and drinks contain a cannabis ingredient. Compare THC per serving with THC in the whole package, and read allergens. Swallowed cannabis can take 30 minutes to 2 hours to start having effects; the delay can lead people to consume too much.",
+          "sources": [
+            "oral",
+            "cdc"
+          ]
+        },
+        {
+          "id": "oils",
+          "title": "Oral oils, tinctures and capsules",
+          "text": "These deliver cannabis ingredients in a liquid or capsule. Tinctures may use alcohol, oil or glycerin. Read the intended route and concentration. A bottle sold for oral use is not automatically suitable for a vape device.",
+          "sources": [
+            "oral"
+          ]
+        },
+        {
+          "id": "vapes",
+          "title": "Vape cartridges and disposables",
+          "text": "These are devices or containers for inhaling a cannabis preparation. Look for the actual extract, added ingredients and intended use. A cartridge shape does not tell you whether it contains resin, rosin or a blend. Smoking and vaporization carry health risks.",
+          "sources": [
+            "ohio"
+          ]
+        },
+        {
+          "id": "concentrates",
+          "title": "Concentrates: wax, shatter and other textures",
+          "text": "Concentrates collect cannabinoid-rich resin into a smaller volume. Names such as wax, shatter and budder describe product formats or textures; ask the producer for the extraction method and ingredient list. Concentrated does not mean harmless.",
+          "sources": [
+            "forms"
+          ]
+        },
+        {
+          "id": "kief",
+          "title": "Kief and hash",
+          "text": "Kief is separated resin-rich material; hash is a concentrated resin product that may be pressed. Mechanical separation differs from dissolving resin into an extraction solvent.",
+          "sources": [
+            "forms"
+          ]
+        },
+        {
+          "id": "live-resin",
+          "title": "Live resin",
+          "text": "Producer descriptions use fresh-frozen flower for live resin products. The word live describes the starting material; it does not mean a living product. Check the disclosed extraction method rather than confusing resin with rosin.",
+          "sources": [
+            "resin",
+            "ohio"
+          ]
+        },
+        {
+          "id": "rosin",
+          "title": "Rosin and live rosin",
+          "text": "Rosin uses heat and pressure to release resin. In Verano’s live-rosin process, ice water first separates trichomes, then pressing produces the extract. Solventless describes the extraction approach; it does not replace batch testing.",
+          "sources": [
+            "rosin"
+          ]
+        },
+        {
+          "id": "topicals",
+          "title": "Topicals",
+          "text": "Creams, lotions and similar preparations are applied to skin. Read the route, ingredients and warnings. Do not assume a topical has the same effects as an edible, or that a product calling itself transdermal behaves like an ordinary lotion.",
+          "sources": [
+            "oral"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "processing",
+      "title": "From plant to product",
+      "lead": "A high-level map of commercial processing, so you can ask better questions about a purchase.",
+      "items": [
+        {
+          "id": "separation",
+          "title": "Mechanical separation → kief or hash",
+          "text": "Physical separation collects resin-bearing material. This is a different approach from chemical extraction, which uses a solvent to separate compounds from the plant.",
+          "sources": [
+            "forms"
+          ]
+        },
+        {
+          "id": "extraction",
+          "title": "Solvent extraction → extracts and infused products",
+          "text": "Extraction may use substances such as butane to separate resin. In Ohio, products made using solvent-based extracts must disclose the extraction process and relevant solvents or chemicals. Ask for residual-solvent test results for the specific lot.",
+          "sources": [
+            "forms",
+            "ohio",
+            "lab"
+          ]
+        },
+        {
+          "id": "pressing",
+          "title": "Ice-water separation + pressing → live rosin",
+          "text": "A producer can separate trichomes in ice water and press the collected material with heat and pressure. The finished extract can be packaged as a concentrate or used in other products.",
+          "sources": [
+            "rosin"
+          ]
+        },
+        {
+          "id": "fresh-frozen",
+          "title": "Fresh-frozen starting material → live concentrates",
+          "text": "Cresco describes its live concentrates as extracted from fresh-frozen flower. This tells you something about the starting material, while the finished format, ingredients and batch tests tell you what is actually in the package.",
+          "sources": [
+            "resin"
+          ]
+        },
+        {
+          "id": "activation",
+          "title": "Decarboxylation → changing cannabinoid chemistry",
+          "text": "Heat changes acidic cannabinoids such as THCA into their neutral forms. Laboratories account for the molecular-weight change when calculating potential total THC. Conversion and delivery are different: a calculated total is not a personal dose.",
+          "sources": [
+            "lab"
+          ]
+        },
+        {
+          "id": "infusion",
+          "title": "Cannabis ingredient + finished recipe → infused product",
+          "text": "An edible, beverage, oil or topical combines a cannabis ingredient with a delivery format. Compare the complete recipe, concentration and intended route, rather than assuming all products made from the same strain are equivalent.",
+          "sources": [
+            "oral"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "labels",
+      "title": "Read the product, not just the name",
+      "lead": "Use these questions at the counter or while browsing a menu.",
+      "items": [
+        {
+          "id": "route",
+          "title": "1. What is it, and how is it intended to be used?",
+          "text": "Confirm the product form, intended route, net contents, ingredients and allergens. For an extract, ask how it was made. Ohio’s rules distinguish plant material from manufactured products and require additional disclosures for some forms.",
+          "sources": [
+            "ohio"
+          ]
+        },
+        {
+          "id": "units",
+          "title": "2. Are the numbers per serving or per package?",
+          "text": "Illustrative arithmetic: a package with 100 mg THC divided equally among 10 gummies contains 10 mg per gummy. This is a reading example, not a recommended amount. Check the actual serving information; package totals and concentration units are different things.",
+          "sources": []
+        },
+        {
+          "id": "concentration",
+          "title": "3. What do %, mg and mg/mL mean?",
+          "text": "Percent is a proportion; mg is an amount; mg/mL is an amount per volume. For example, 20 mg/mL × 0.5 mL = 10 mg. These calculations describe product content, not the amount absorbed or a prediction of effects.",
+          "sources": []
+        },
+        {
+          "id": "coa",
+          "title": "4. Does the lab report match this batch?",
+          "text": "A certificate of analysis (COA) records laboratory results for a sample. Match the product, batch or lot, lab and dates. Look at cannabinoid results and contaminant panels, including residual solvents when relevant. A report for another batch is not evidence about this one.",
+          "sources": [
+            "coa",
+            "lab"
+          ]
+        },
+        {
+          "id": "questions",
+          "title": "5. What is still unclear?",
+          "text": "Ask: Which extract is used? What ingredients were added? Where is this lot’s lab report? What does the serving size refer to? Marketing words and a familiar strain name do not answer these questions.",
+          "sources": []
+        }
+      ]
+    },
+    {
+      "id": "safer-use",
+      "title": "Effects, timing and storage",
+      "lead": "Understanding a product includes understanding its risks.",
+      "items": [
+        {
+          "id": "timing",
+          "title": "Swallowed products can take longer",
+          "text": "Edible effects can be delayed and unpredictable. Inhaled and swallowed products differ in timing, and effects can persist for hours. Do not use the absence of an immediate effect as proof that an edible was weak.",
+          "sources": [
+            "cdc",
+            "safety"
+          ]
+        },
+        {
+          "id": "storage",
+          "title": "Protect children and other people",
+          "text": "Store products securely away from children and pets, especially food-like edibles. Do not drive while impaired or combine cannabis with alcohol. Discuss medication interactions and health questions with a qualified clinician.",
+          "sources": [
+            "cdc",
+            "safety",
+            "nih"
+          ]
+        },
+        {
+          "id": "help",
+          "title": "Get help when needed",
+          "text": "If someone has concerning symptoms after cannabis exposure, contact Poison Control in the U.S. at 1-800-222-1222. For a medical emergency, call 911.",
+          "sources": [
+            "cdc"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hemp",
+      "title": "Hemp, CBD and THC products in Ohio",
+      "lead": "What changed in Ohio in 2026, what still counts as hemp, and the federal dates coming up. Sources checked November 9, 2026. This is a plain-language summary, not legal advice.",
+      "items": [
+        {
+          "id": "hemp-ohio-rule",
+          "title": "Ohio’s 0.4 mg rule (since March 20, 2026)",
+          "text": "Senate Bill 56 changed how Ohio defines hemp. THC is now counted as total THC, including THCA. A finished hemp product with more than 0.4 milligrams of total THC per container is not hemp under Ohio law. The Division of Cannabis Control treats it as marijuana, and only a dispensary the Division licenses may sell it.",
+          "sources": [
+            "orc-928-01",
+            "dcc-hemp-ban"
+          ]
+        },
+        {
+          "id": "hemp-per-container",
+          "title": "Per container, not per serving",
+          "text": "“Container” means the innermost package that touches the product: the can, bottle, jar, bag, packet or vape cartridge. Add up every serving inside it. A pack of ten 5 mg gummies holds 50 mg of THC, well over the 0.4 mg limit, so it can only be sold at a licensed dispensary.",
+          "sources": [
+            "orc-928-01"
+          ]
+        },
+        {
+          "id": "hemp-off-shelves",
+          "title": "What left gas stations and smoke shops",
+          "text": "The Division of Cannabis Control says hemp-derived THC drinks, and gummies, candies and cereals made to appeal to children, can no longer be bought legally anywhere in Ohio. Dispensary products, including marijuana drinks, must be grown, processed and tested in state-approved facilities and come in child-resistant packaging. Look for the Division’s seal at the door and on the package.",
+          "sources": [
+            "dcc-hemp-ban",
+            "dcc-map"
+          ]
+        },
+        {
+          "id": "hemp-cbd",
+          "title": "CBD and other low-THC products",
+          "text": "A product can still be hemp in Ohio if it has 0.4 mg of total THC or less per container and no synthetic cannabinoids or cannabinoids made outside the plant. Delta-8 and similar products made by converting CBD in a lab do not qualify. Ask for the lab report and check total THC for the whole container, not just delta-9 THC.",
+          "sources": [
+            "orc-928-01",
+            "lsc-sb56"
+          ]
+        },
+        {
+          "id": "hemp-federal-dates",
+          "title": "Federal dates: November 12 and December 11, 2026",
+          "text": "A 2025 federal law adopts a similar definition nationwide. A September 2026 funding law split its start date. On November 12, 2026, products containing cannabinoids the cannabis plant cannot make naturally, such as THC-O, lose federal hemp status. The rest, including the total-THC test and the 0.4 mg per-container cap, starts December 11, 2026 unless Congress changes it again. In Ohio, the state’s own 0.4 mg rule has applied since March 20, 2026, whatever happens federally.",
+          "sources": [
+            "hr6500-2019",
+            "crs-lsb11496"
+          ]
+        },
+        {
+          "id": "hemp-sellers",
+          "title": "If you sell hemp or CBD products in Ohio",
+          "text": "Anything over 0.4 mg of total THC per container can only be sold through a dispensary the Division of Cannabis Control licenses. Turning hemp into a product needs a hemp processing license from the Ohio Department of Agriculture. The Department enforces the hemp law together with the Ohio Investigative Unit. Check current Department of Agriculture and Division of Cannabis Control guidance, and talk to a lawyer about stock you already hold.",
+          "sources": [
+            "lsc-sb56",
+            "dcc-hemp-ban"
+          ]
+        }
+      ]
+    }
+  ]
+}
