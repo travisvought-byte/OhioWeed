@@ -59,7 +59,9 @@ def build(src: Path, ids: set) -> Path:
     ids_file = tmp / 'ohio-ids.json'
     ids_file.write_text(json.dumps([{'id': i} for i in sorted(ids)]), encoding='utf-8')
     filter_directory(work, ids_file)
-    env = {**__import__('os').environ, 'SITE_ORIGIN': SITE}
+    # RL_invariant makes reportlab write fixed dates and file IDs, so the PDFs come out
+    # byte-identical from one run to the next and the refresh only commits real changes.
+    env = {**__import__('os').environ, 'SITE_ORIGIN': SITE, 'RL_invariant': '1'}
     for script in sorted(work.glob('build_*.py')):
         r = subprocess.run([sys.executable, script.name], cwd=work, env=env, capture_output=True, text=True, timeout=600)
         if r.returncode != 0:
@@ -151,12 +153,6 @@ def clean_page(text: str, name: str) -> str:
     return brand_page(re.sub(r'(href)="([^"]+)"', rewrite, text), name)
 
 
-def pdf_key(data: bytes) -> bytes:
-    """A PDF with its build dates and random file ID removed, for comparing content only."""
-    data = re.sub(rb'D:\d{14}', b'', data)
-    return re.sub(rb'/ID\s*\[<[0-9a-fA-F]+><[0-9a-fA-F]+>\]', b'', data)
-
-
 def copy_into(work: Path, out: Path, ids: set):
     for name in PAGES:
         page = clean_page((work / f'{name}.html').read_text(encoding='utf-8'), name)
@@ -168,11 +164,7 @@ def copy_into(work: Path, out: Path, ids: set):
         if f.is_dir():
             shutil.copytree(f, out / 'assets' / f.name, dirs_exist_ok=True)
         elif f.name not in {'analytics.js', 'pennsylvania-advocacy.js'}:
-            dst = out / 'assets' / f.name
-            # PDFs carry build timestamps and a random /ID; keep the committed file when the content is the same.
-            if f.suffix == '.pdf' and dst.exists() and pdf_key(dst.read_bytes()) == pdf_key(f.read_bytes()):
-                continue
-            shutil.copy2(f, dst)
+            shutil.copy2(f, out / 'assets' / f.name)
     (out / 'data/strains').mkdir(parents=True, exist_ok=True)
     for name in DATA_FILES:
         shutil.copy2(work / 'data' / name, out / 'data' / name)
@@ -227,7 +219,7 @@ def filter_csvs(work: Path, out: Path, ohio_ids: set):
             rows = list(csv.reader(f))
         kept = [rows[0]] + [r for r in rows[1:] if keep(r)]
         with dst.open('w', encoding='utf-8-sig', newline='') as f:
-            csv.writer(f, lineterminator='\r\n').writerows(kept)
+            csv.writer(f, lineterminator='\n').writerows(kept)
         print(f'{dst.name}: {len(kept) - 1} of {len(rows) - 1} rows kept')
 
     write_rows(work / 'ohio-cannabis-directory.csv', out / 'ohio-cannabis-directory.csv',
