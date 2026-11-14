@@ -1,0 +1,60 @@
+name: Refresh Ohio pages from the directory
+
+on:
+  schedule:
+    - cron: '17 */6 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: refresh-ohio-pages
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: OhioWeed
+
+      - uses: actions/checkout@v4
+        with:
+          repository: travisvought-byte/ohio-cannabis-directory
+          path: ohio-cannabis-directory
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install directory build requirements
+        run: pip install -r ohio-cannabis-directory/requirements.txt
+
+      - name: Rebuild the Ohio pages
+        working-directory: OhioWeed
+        run: python3 scripts/mirror_directory.py ../ohio-cannabis-directory --out .
+
+      - name: Open or update the pull request
+        working-directory: OhioWeed
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -B refresh/ohio-pages
+          git add -A
+          if git diff --cached --quiet; then
+            echo "No changes since the last refresh."
+            exit 0
+          fi
+          git commit -m "Refresh Ohio pages from ohio-cannabis-directory"
+          git push --force origin refresh/ohio-pages
+          if [ -z "$(gh pr list --head refresh/ohio-pages --state open --json number --jq '.[].number')" ]; then
+            gh pr create --base main --head refresh/ohio-pages \
+              --title "Refresh Ohio pages from ohio-cannabis-directory" \
+              --body "Automated refresh. The Ohio pages, data and exports were rebuilt from the current main branch of ohio-cannabis-directory. Review the diff and merge to publish."
+          fi
