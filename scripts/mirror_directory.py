@@ -16,6 +16,7 @@ What it does:
 6. Checks that every local link and asset resolves, then rewrites sitemap.xml.
 """
 import argparse, csv, json, re, shutil, subprocess, sys, tempfile
+from html import escape as html_escape
 from pathlib import Path
 from urllib.parse import unquote
 
@@ -87,14 +88,56 @@ SITE_BAR = (
 HEAD_ICON = '<link rel="icon" href="favicon.svg"><link rel="apple-touch-icon" href="favicon.svg">'
 
 
-def brand_page(text: str) -> str:
-    """Give a mirrored page OhioWeed's icon, tab title and top bar."""
+CARD = SITE + '/assets/og-card.png'
+
+# These pages ship a generic site-wide description from the directory build, so five of
+# them end up identical. Search engines discount duplicates, so each gets its own line.
+DESCRIPTIONS = {
+    'ancestry': 'Browse cannabis strain profiles with Ohio flower listings and producer genetics, '
+                "drawn from Ohio producers' published catalogs and general strain references.",
+    'assessment': 'A 33-question self-check for Ohio cannabis businesses preparing for banking, '
+                  'financing or an internal review. Score what you can document today.',
+    'buyer-guide': 'New to cannabis? Build a short dispensary shopping plan you can show the person '
+                   'helping you, then download or print it before you go.',
+    'intake': 'Add an Ohio cannabis organization to the directory or send a correction. Entries stay '
+              'on your device until you export them.',
+    'locations': 'Search Ohio dispensary addresses by city or county and compare nearby locations, '
+                 'with links to verify current license status with the state.',
+}
+
+
+def brand_page(text: str, name: str) -> str:
+    """Give a mirrored page OhioWeed's icon, tab title, canonical URL, share card and top bar."""
     text = re.sub(r'(<title>[^<]*?)\s*\|\s*Ohio Cannabis Directory(</title>)', r'\1 | OhioWeed\2', text)
     text = re.sub(r'(<meta property="og:title" content="[^"]*?)\s*\|\s*Ohio Cannabis Directory(")', r'\1 | OhioWeed\2', text)
-    text = text.replace('<head>', '<head>' + HEAD_ICON, 1)
+
+    desc = DESCRIPTIONS.get(name)
+    if desc:
+        for attr in ('name="description"', 'property="og:description"'):
+            text = re.sub(rf'<meta {re.escape(attr)} content="[^"]*">', f'<meta {attr} content="{desc}">', text)
+
+    url = f'{SITE}/{name}.html'
+    title = re.search(r'<title>([^<]*)</title>', text)
+    found = re.search(r'<meta name="description" content="([^"]*)">', text)
+    head = HEAD_ICON
+    if not re.search(r'<link rel="canonical"', text):
+        head += f'<link rel="canonical" href="{url}">'
+    if not re.search(r'<meta property="og:url"', text):
+        head += f'<meta property="og:url" content="{url}">'
+    head += (f'<meta property="og:image" content="{CARD}">'
+             '<meta property="og:image:width" content="1200">'
+             '<meta property="og:image:height" content="630">'
+             '<meta name="twitter:card" content="summary_large_image">'
+             f'<meta name="twitter:image" content="{CARD}">')
+    if title:
+        head += f'<meta name="twitter:title" content="{html_escape(title.group(1))}">'
+    if found:
+        head += f'<meta name="twitter:description" content="{found.group(1)}">'
+
+    text = text.replace('<head>', '<head>' + head, 1)
     return re.sub(r'(<body[^>]*>)', lambda m: m.group(1) + SITE_BAR, text, count=1)
 
-def clean_page(text: str) -> str:
+def clean_page(text: str, name: str) -> str:
     text = re.sub(r'<script\b[^>]*\bsrc="assets/analytics\.js"[^>]*>\s*</script>\s*', '', text)
     text = text.replace(NOTE_OLD, NOTE_NEW)
     def rewrite(m):
@@ -105,7 +148,7 @@ def clean_page(text: str) -> str:
         if path in {'state.html', 'pennsylvania-directory.html', 'pennsylvania-advocacy.html'}:
             return f'{m.group(1)}="{WEED}{target}"'
         return m.group(0)
-    return brand_page(re.sub(r'(href)="([^"]+)"', rewrite, text))
+    return brand_page(re.sub(r'(href)="([^"]+)"', rewrite, text), name)
 
 
 def pdf_key(data: bytes) -> bytes:
@@ -116,7 +159,7 @@ def pdf_key(data: bytes) -> bytes:
 
 def copy_into(work: Path, out: Path, ids: set):
     for name in PAGES:
-        page = clean_page((work / f'{name}.html').read_text(encoding='utf-8'))
+        page = clean_page((work / f'{name}.html').read_text(encoding='utf-8'), name)
         if 'assets/analytics.js' in page or 'goatcounter' in page:
             raise SystemExit(f'{name}.html still loads analytics')
         (out / f'{name}.html').write_text(page, encoding='utf-8')
