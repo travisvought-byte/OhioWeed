@@ -34,7 +34,7 @@ FILTERED_CSVS = {'ohio-cannabis-directory.csv', 'b2b-relationships.csv'}
 NOT_MIRRORED = {'state.html', 'pennsylvania-directory.html', 'pennsylvania-advocacy.html', 'directory.html', 'index.html'}
 WEED = 'https://weed.vethomeguard.org/'
 SITE = 'https://ohioweed.org'
-OWN_PAGES = {'index.html', 'directory.html', 'dispensaries.html', 'events.html', 'rules.html', 'mjbizcon.html', 'veteran-grow.html'}
+OWN_PAGES = {'index.html', 'directory.html', 'dispensaries.html', 'events.html', 'rules.html', 'mjbizcon.html', 'veteran-grow.html', 'find.html'}
 
 
 def ohio_org_ids(src: Path) -> set:
@@ -70,6 +70,30 @@ NOTE_OLD = 'Your state/topic choices are not included in analytics events.'
 NOTE_NEW = 'Your state/topic choices are not stored or sent anywhere.'
 
 
+# A slim OhioWeed bar sits above each mirrored page, so the directory pages read as
+# part of this site rather than a separate one. Styles are inline: the mirrored pages
+# ship their own stylesheet and must not depend on OhioWeed's.
+SITE_BAR = (
+    '<div style="background:#173e34;color:#f5f2e9;font:14px/1.45 Inter,ui-sans-serif,system-ui,sans-serif">'
+    '<div style="max-width:1120px;margin:0 auto;padding:9px 18px;display:flex;flex-wrap:wrap;align-items:center;gap:6px 18px">'
+    '<a href="index.html" style="display:flex;align-items:center;gap:9px;color:#fff;text-decoration:none;font-weight:700">'
+    '<img src="favicon.svg" alt="" width="26" height="26" style="border-radius:7px;display:block">OhioWeed</a>'
+    '<span style="opacity:.62">The Ohio cannabis guide</span>'
+    '<span style="margin-left:auto;display:flex;flex-wrap:wrap;gap:8px 16px">'
+    '<a href="find.html" style="color:#d7f080">Find what you need</a>'
+    '<a href="dispensaries.html" style="color:#d7f080">Dispensary map</a>'
+    '</span></div></div>'
+)
+HEAD_ICON = '<link rel="icon" href="favicon.svg"><link rel="apple-touch-icon" href="favicon.svg">'
+
+
+def brand_page(text: str) -> str:
+    """Give a mirrored page OhioWeed's icon, tab title and top bar."""
+    text = re.sub(r'(<title>[^<]*?)\s*\|\s*Ohio Cannabis Directory(</title>)', r'\1 | OhioWeed\2', text)
+    text = re.sub(r'(<meta property="og:title" content="[^"]*?)\s*\|\s*Ohio Cannabis Directory(")', r'\1 | OhioWeed\2', text)
+    text = text.replace('<head>', '<head>' + HEAD_ICON, 1)
+    return re.sub(r'(<body[^>]*>)', lambda m: m.group(1) + SITE_BAR, text, count=1)
+
 def clean_page(text: str) -> str:
     text = re.sub(r'<script\b[^>]*\bsrc="assets/analytics\.js"[^>]*>\s*</script>\s*', '', text)
     text = text.replace(NOTE_OLD, NOTE_NEW)
@@ -81,7 +105,7 @@ def clean_page(text: str) -> str:
         if path in {'state.html', 'pennsylvania-directory.html', 'pennsylvania-advocacy.html'}:
             return f'{m.group(1)}="{WEED}{target}"'
         return m.group(0)
-    return re.sub(r'(href)="([^"]+)"', rewrite, text)
+    return brand_page(re.sub(r'(href)="([^"]+)"', rewrite, text))
 
 
 def pdf_key(data: bytes) -> bytes:
@@ -190,7 +214,7 @@ def check_links(out: Path):
 
 
 def write_sitemap(out: Path):
-    pages = sorted(['index.html', 'directory.html', 'dispensaries.html', 'events.html', 'rules.html', 'mjbizcon.html', 'veteran-grow.html'] + [f'{p}.html' for p in PAGES])
+    pages = sorted(['index.html', 'directory.html', 'dispensaries.html', 'events.html', 'rules.html', 'mjbizcon.html', 'veteran-grow.html', 'find.html'] + [f'{p}.html' for p in PAGES])
     urls = [f"{SITE}/" if p == 'index.html' else f"{SITE}/{p}" for p in pages]
     body = ''.join(f'  <url><loc>{u}</loc></url>\n' for u in urls)
     (out / 'sitemap.xml').write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + body + '</urlset>\n', encoding='utf-8')
