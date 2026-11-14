@@ -95,3 +95,13 @@ img.brand-mark{background:none;border-radius:10px;object-fit:contain}
   .nav-links{mask-image:linear-gradient(90deg,#000 calc(100% - 26px),transparent)}
   .nav-links a{white-space:nowrap;padding:5px 0;font-size:.92rem}
 }
+/* The state and the leaf were doing all their work on the home page and then
+   stopping. Every interior hero carries the mark now, large and faint, with
+   the same ring pattern the home hero uses. Decorative only. */
+.page-hero{position:relative;overflow:hidden}
+.page-hero .wrap{position:relative;z-index:1}
+.page-hero:before{content:'';position:absolute;z-index:0;right:-54px;top:50%;transform:translateY(-50%);
+  width:330px;height:330px;background:url(../favicon.svg) center/contain no-repeat;opacity:.085;pointer-events:none}
+.page-hero:after{content:'';position:absolute;z-index:0;right:-170px;top:-200px;width:470px;height:470px;
+  border:1px solid #ffffff1c;border-radius:50%;box-shadow:0 0 0 42px #ffffff09,0 0 0 96px #ffffff07;pointer-events:none}
+@media(max-width:860px){.page-hero:before{right:-104px;width:250px;height:250px;opacity:.06}.page-hero:after{display:none}}
