@@ -76,3 +76,22 @@ img.brand-mark{background:none;border-radius:10px;object-fit:contain}
 /* Author display rules outrank the browser's own [hidden] rule, so cards and
    rows that script hides stayed on screen. One guard covers every such list. */
 [hidden]{display:none!important}
+/* Phones: no hamburger. The five sections sit in a strip you can thumb along,
+   and search keeps its place beside the mark. Burying the nav one tap deep on
+   the device most people arrive on was costing more than the row it saved. */
+@media(max-width:860px){
+  .menu-button{display:none}
+  .nav-wrap{flex-wrap:wrap;gap:9px 12px;min-height:0;padding-top:11px;padding-bottom:0}
+  .brand{font-size:1.1rem}
+  .brand small{display:none}
+  .nav-search{order:2;flex:1 1 140px;min-width:0;margin-left:auto;padding-left:12px}
+  .nav-search input{font-size:16px}
+  .nav-links{order:3;flex:1 0 100%;display:flex!important;position:static;flex-direction:row;flex-wrap:nowrap;
+             overflow-x:auto;overscroll-behavior-x:contain;gap:19px;padding:2px 0 10px;margin:0;
+             background:none;border:0;scrollbar-width:none}
+  .nav-links::-webkit-scrollbar{display:none}
+  /* the strip runs past the right edge on narrow phones; fade it so that
+     reads as more to come rather than as a label cut off by accident */
+  .nav-links{mask-image:linear-gradient(90deg,#000 calc(100% - 26px),transparent)}
+  .nav-links a{white-space:nowrap;padding:5px 0;font-size:.92rem}
+}
