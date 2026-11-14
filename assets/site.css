@@ -47,3 +47,21 @@ img.brand-mark{background:none;border-radius:10px;object-fit:contain}
 .find-card h3{margin:0;font-size:1.06rem;color:var(--pine)}
 .find-card p{margin:0;font-size:.9rem;color:#55635b}
 .find-go{margin-top:auto;padding-top:8px;font-size:.8rem;font-weight:700;letter-spacing:.04em;color:var(--pine)}
+.join-shell{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:18px;align-items:start}
+.join-form,.join-side{background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:24px}
+.join-side{background:#edf1e6}
+.join-h{font-size:1.3rem;letter-spacing:-.035em;margin:0 0 14px}
+.signup-box{min-height:96px}
+.signup-fallback-lead{font-size:.93rem;color:#516159;margin:0 0 16px}
+.signup-frame{width:100%;min-height:430px;border:0}
+.signup-fine{font-size:.8rem;color:var(--muted);margin:16px 0 0;line-height:1.5}
+.join-list{margin:0;padding:0;list-style:none;display:grid;gap:13px}
+.join-list li{font-size:.92rem;color:#516159;padding-left:17px;position:relative}
+.join-list li:before{content:'';position:absolute;left:0;top:.52em;width:7px;height:7px;border-radius:50%;background:var(--pine)}
+.join-list strong{color:var(--ink)}
+.join-note{font-size:.85rem;color:var(--muted);border-top:1px solid #dbe2d6;margin:17px 0 0;padding-top:14px}
+.region-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:13px}
+.region-card{background:var(--paper);border:1px solid var(--line);border-radius:15px;padding:17px}
+.region-card h3{font-size:1.02rem;letter-spacing:-.03em;margin:0 0 6px;color:var(--pine)}
+.region-card p{font-size:.86rem;color:#5d6b63;margin:0}
+@media(max-width:860px){.join-shell{grid-template-columns:1fr}}

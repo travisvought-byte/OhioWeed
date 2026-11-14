@@ -35,7 +35,11 @@ FILTERED_CSVS = {'ohio-cannabis-directory.csv', 'b2b-relationships.csv'}
 NOT_MIRRORED = {'state.html', 'pennsylvania-directory.html', 'pennsylvania-advocacy.html', 'directory.html', 'index.html'}
 WEED = 'https://weed.vethomeguard.org/'
 SITE = 'https://ohioweed.org'
-OWN_PAGES = {'index.html', 'directory.html', 'dispensaries.html', 'events.html', 'rules.html', 'mjbizcon.html', 'veteran-grow.html', 'find.html'}
+# Pages written in this repo rather than mirrored from the directory. They are
+# never overwritten by a refresh, and they belong in the sitemap alongside the
+# mirrored ones.
+OWN_PAGES = {'index.html', 'directory.html', 'dispensaries.html', 'events.html', 'rules.html',
+             'mjbizcon.html', 'veteran-grow.html', 'find.html', 'join.html'}
 
 
 def ohio_org_ids(src: Path) -> set:
@@ -249,7 +253,7 @@ def check_links(out: Path):
 
 
 def write_sitemap(out: Path):
-    pages = sorted(['index.html', 'directory.html', 'dispensaries.html', 'events.html', 'rules.html', 'mjbizcon.html', 'veteran-grow.html', 'find.html'] + [f'{p}.html' for p in PAGES])
+    pages = sorted(OWN_PAGES | {f'{p}.html' for p in PAGES})
     urls = [f"{SITE}/" if p == 'index.html' else f"{SITE}/{p}" for p in pages]
     body = ''.join(f'  <url><loc>{u}</loc></url>\n' for u in urls)
     (out / 'sitemap.xml').write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + body + '</urlset>\n', encoding='utf-8')
