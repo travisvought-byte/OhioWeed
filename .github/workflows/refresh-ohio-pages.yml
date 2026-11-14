@@ -7,14 +7,19 @@ on:
 
 permissions:
   contents: write
-  pull-requests: write
+  pages: write
+  id-token: write
 
+# Shares the deploy workflow's group so the two never publish at once.
 concurrency:
-  group: refresh-ohio-pages
+  group: pages
   cancel-in-progress: false
 
 jobs:
   refresh:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -37,24 +42,34 @@ jobs:
         working-directory: OhioWeed
         run: python3 scripts/mirror_directory.py ../ohio-cannabis-directory --out .
 
-      - name: Open or update the pull request
+      - name: Commit the refresh
+        id: commit
         working-directory: OhioWeed
-        env:
-          GH_TOKEN: ${{ github.token }}
         run: |
           set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git checkout -B refresh/ohio-pages
           git add -A
           if git diff --cached --quiet; then
-            echo "No changes since the last refresh."
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "The directory has not changed since the last refresh."
             exit 0
           fi
           git commit -m "Refresh Ohio pages from ohio-cannabis-directory"
-          git push --force origin refresh/ohio-pages
-          if [ -z "$(gh pr list --head refresh/ohio-pages --state open --json number --jq '.[].number')" ]; then
-            gh pr create --base main --head refresh/ohio-pages \
-              --title "Refresh Ohio pages from ohio-cannabis-directory" \
-              --body "Automated refresh. The Ohio pages, data and exports were rebuilt from the current main branch of ohio-cannabis-directory. Review the diff and merge to publish."
-          fi
+          git pull --rebase origin main
+          git push origin HEAD:main
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+
+      # A push made with the built-in token does not start other workflows, so the
+      # deploy happens here rather than waiting for pages.yml to notice.
+      - uses: actions/configure-pages@v5
+        if: steps.commit.outputs.changed == 'true'
+
+      - uses: actions/upload-pages-artifact@v3
+        if: steps.commit.outputs.changed == 'true'
+        with:
+          path: OhioWeed
+
+      - id: deployment
+        uses: actions/deploy-pages@v4
+        if: steps.commit.outputs.changed == 'true'
