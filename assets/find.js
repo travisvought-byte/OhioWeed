@@ -18,8 +18,14 @@
     business: 'running a business',
     about: 'this guide'
   };
-  let scope = new URLSearchParams(location.search).get('for');
+  const params = new URLSearchParams(location.search);
+  let scope = params.get('for');
   if (!LABELS[scope]) scope = null;
+
+  // The header search box on every page is a GET form pointed here, so a
+  // search started anywhere on the site arrives as ?q= and is already run.
+  const handoff = (params.get('q') || '').slice(0, 80);
+  if (handoff) { q.value = handoff; scope = null; }
 
   function inScope(card) {
     if (!scope) return true;
