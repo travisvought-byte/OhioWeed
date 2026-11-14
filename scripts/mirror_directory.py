@@ -34,7 +34,7 @@ FILTERED_CSVS = {'ohio-cannabis-directory.csv', 'b2b-relationships.csv'}
 NOT_MIRRORED = {'state.html', 'pennsylvania-directory.html', 'pennsylvania-advocacy.html', 'directory.html', 'index.html'}
 WEED = 'https://weed.vethomeguard.org/'
 SITE = 'https://ohioweed.org'
-OWN_PAGES = {'index.html', 'directory.html', 'dispensaries.html', 'events.html', 'rules.html'}
+OWN_PAGES = {'index.html', 'directory.html', 'dispensaries.html', 'events.html', 'rules.html', 'mjbizcon.html'}
 
 
 def ohio_org_ids(src: Path) -> set:
@@ -84,6 +84,12 @@ def clean_page(text: str) -> str:
     return re.sub(r'(href)="([^"]+)"', rewrite, text)
 
 
+def pdf_key(data: bytes) -> bytes:
+    """A PDF with its build dates and random file ID removed, for comparing content only."""
+    data = re.sub(rb'D:\d{14}', b'', data)
+    return re.sub(rb'/ID\s*\[<[0-9a-fA-F]+><[0-9a-fA-F]+>\]', b'', data)
+
+
 def copy_into(work: Path, out: Path, ids: set):
     for name in PAGES:
         page = clean_page((work / f'{name}.html').read_text(encoding='utf-8'))
@@ -95,7 +101,11 @@ def copy_into(work: Path, out: Path, ids: set):
         if f.is_dir():
             shutil.copytree(f, out / 'assets' / f.name, dirs_exist_ok=True)
         elif f.name not in {'analytics.js', 'pennsylvania-advocacy.js'}:
-            shutil.copy2(f, out / 'assets' / f.name)
+            dst = out / 'assets' / f.name
+            # PDFs carry build timestamps and a random /ID; keep the committed file when the content is the same.
+            if f.suffix == '.pdf' and dst.exists() and pdf_key(dst.read_bytes()) == pdf_key(f.read_bytes()):
+                continue
+            shutil.copy2(f, dst)
     (out / 'data/strains').mkdir(parents=True, exist_ok=True)
     for name in DATA_FILES:
         shutil.copy2(work / 'data' / name, out / 'data' / name)
@@ -180,7 +190,7 @@ def check_links(out: Path):
 
 
 def write_sitemap(out: Path):
-    pages = sorted(['index.html', 'directory.html', 'dispensaries.html', 'events.html', 'rules.html'] + [f'{p}.html' for p in PAGES])
+    pages = sorted(['index.html', 'directory.html', 'dispensaries.html', 'events.html', 'rules.html', 'mjbizcon.html'] + [f'{p}.html' for p in PAGES])
     urls = [f"{SITE}/" if p == 'index.html' else f"{SITE}/{p}" for p in pages]
     body = ''.join(f'  <url><loc>{u}</loc></url>\n' for u in urls)
     (out / 'sitemap.xml').write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + body + '</urlset>\n', encoding='utf-8')
