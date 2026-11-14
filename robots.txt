@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://ohioweed.org/sitemap.xml
