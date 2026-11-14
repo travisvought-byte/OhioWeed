@@ -12,3 +12,38 @@
 .guide-table th,.guide-table td{text-align:left;padding:10px 12px;border-bottom:1px solid #d7ded9;vertical-align:top}
 .guide-table th{background:#edf1e6;color:var(--pine)}
 .guide-links{display:flex;flex-wrap:wrap;gap:12px;margin:20px 0}
+.map-shell{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr);gap:24px;align-items:start;margin:8px 0 28px}
+.ohio-map{background:#eef2e7;border:1px solid #d7ded9;border-radius:16px;padding:10px}
+.ohio-svg{display:block;width:100%;height:auto}
+.ohio-fill{fill:#fdfcf7}
+.ohio-county{fill:none;stroke:#c3d0c1;stroke-width:1;vector-effect:non-scaling-stroke;transition:fill .2s}
+.ohio-county.is-on{fill:#e4efd2}
+.ohio-outline{fill:none;stroke:var(--pine);stroke-width:2.5;stroke-linejoin:round;vector-effect:non-scaling-stroke;pointer-events:none}
+.map-dot{fill:#b9e24a;stroke:var(--pine);stroke-width:1.3;cursor:pointer;transition:fill .12s,opacity .12s;vector-effect:non-scaling-stroke}
+.map-dot:hover{fill:#d6f17e}
+.map-dot.is-dim{opacity:.13;pointer-events:none}
+.map-dot.is-active{fill:var(--orange,#e8743b);stroke-width:2.5}
+.map-note{font-size:.85rem;color:#55635b;margin:10px 2px 0}
+.map-panel{position:sticky;top:16px}
+.panel-card{background:#edf1e6;border-radius:16px;padding:20px}
+.panel-card h3{margin:0 0 8px}
+.panel-card .button{margin-top:14px}
+.panel-hint{background:#f4f1e6;border:1px dashed #c3d0c1}
+@media(max-width:860px){.map-shell{grid-template-columns:1fr}.map-panel{position:static}}
+.toolbar-4{grid-template-columns:minmax(0,2.2fr) minmax(0,1fr) minmax(0,1fr) auto;align-items:end}
+.field-action{display:flex;align-items:flex-end}
+.field-action .button{white-space:nowrap}
+@media(max-width:980px){.toolbar-4{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.toolbar-4{grid-template-columns:1fr}}
+.ohio-mark{display:block;width:205px;height:205px;margin:0 auto}
+img.brand-mark{background:none;border-radius:10px;object-fit:contain}
+.stamp-text .stamp-caption{margin-top:6px}
+.find-group{margin:36px 0 0}
+.find-group h2{display:flex;align-items:center;gap:10px;font-size:1.45rem;margin:0 0 14px}
+.find-icon{font-size:1.1rem}
+.find-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:14px}
+.find-card{display:flex;flex-direction:column;gap:6px;background:var(--paper);border:1px solid var(--line);border-radius:15px;padding:18px;text-decoration:none;color:var(--ink);transition:transform .14s,border-color .14s,box-shadow .14s}
+.find-card:hover{transform:translateY(-2px);border-color:var(--pine);box-shadow:var(--shadow)}
+.find-card h3{margin:0;font-size:1.06rem;color:var(--pine)}
+.find-card p{margin:0;font-size:.9rem;color:#55635b}
+.find-go{margin-top:auto;padding-top:8px;font-size:.8rem;font-weight:700;letter-spacing:.04em;color:var(--pine)}
