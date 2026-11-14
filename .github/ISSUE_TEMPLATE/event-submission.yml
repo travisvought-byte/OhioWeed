@@ -1,0 +1,65 @@
+name: Suggest an Ohio event
+description: Share a public, Ohio-based cannabis event for the calendar.
+title: "[Event suggestion]: "
+labels: ["event suggestion", "needs review"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for helping improve the OhioWeed calendar. Submissions are public and reviewed before listing. Please share an official organizer page. Do not include personal contact details, private addresses, medical information, sales offers, or attendee information.
+  - type: input
+    id: event-name
+    attributes:
+      label: Event name
+      placeholder: Example: Ohio community education meetup
+    validations:
+      required: true
+  - type: input
+    id: event-date
+    attributes:
+      label: Date (and end date, if applicable)
+      placeholder: YYYY-MM-DD
+    validations:
+      required: true
+  - type: input
+    id: event-city
+    attributes:
+      label: Ohio city or area
+      placeholder: Example: Columbus / Central Ohio
+    validations:
+      required: true
+  - type: dropdown
+    id: event-type
+    attributes:
+      label: Event type
+      options:
+        - Community meetup
+        - Education or workshop
+        - Expo or conference
+        - Arts, culture, or activity
+        - Other public event
+    validations:
+      required: true
+  - type: input
+    id: organizer-page
+    attributes:
+      label: Official public organizer page
+      description: Link to the organizer's event details. Please don't submit private addresses or personal contact information.
+      placeholder: https://
+    validations:
+      required: true
+  - type: textarea
+    id: event-notes
+    attributes:
+      label: Useful public details
+      description: Optional. Include age policy, RSVP or ticket details, accessibility information, or event policies only if shown on the organizer's page.
+      render: markdown
+    validations:
+      required: false
+  - type: checkboxes
+    id: submission-check
+    attributes:
+      label: Before submitting
+      options:
+        - label: I checked that this event is in Ohio and linked a public organizer page.
+          required: true

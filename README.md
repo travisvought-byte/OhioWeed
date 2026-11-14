@@ -7,7 +7,8 @@ A source-linked, Ohio-first guide to cannabis organizations, state location reco
 - index.html — guide homepage
 - directory.html — searchable Ohio cannabis organization directory
 - dispensaries.html — location snapshot with city and text search
-- events.html — upcoming Ohio events
+- events.html — upcoming Ohio events with city/region filters and public event suggestions
+- field-notes.html — practical editorial guides
 - rules.html — plain-language summaries linked to official sources
 
 ## Data and reuse

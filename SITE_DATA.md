@@ -9,7 +9,8 @@ Required attribution: **“Ohio Cannabis Ecosystem Directory, compiled by Travis
 - Directory: 516 organizations labeled publishable in the source directory. Coverage text, source URLs and per-record review dates are retained. Entries may be national, Ohio-specific or describe an Ohio connection whose service scope is limited. No paid placement or ranking is used.
 - Dispensary locations: 230 Ohio location records from a government map snapshot retrieved October 10, 2026. The map's update date and completeness are unknown; its status labels do not establish current license status. Confirm directly with the Ohio Division of Cannabis Control.
 - Rules and resources: Ohio-only rules and source summaries from the source dataset. Each card links to the cited statutory source. The summaries were not independently re-reviewed for this project.
-- Events: upcoming Ohio events only, filtered from the source snapshot as of November 14, 2026. Confirm details with the organizer.
+- Events: three upcoming Ohio events found on public organizer pages as of November 14, 2026. Calendar filters run in the visitor's browser; no GPS or location is collected. Confirm dates, access, venue and policies with each organizer. Public event suggestions are reviewed before listing.
+- Communities: links to independent, user-run third-party forums; OhioWeed does not control or endorse their posts or moderation.
 
 This guide does not certify any organization, license, service, event or product. The listings are editorial and source-linked, not endorsements.
 

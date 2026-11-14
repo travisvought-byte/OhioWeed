@@ -1,1 +1,49 @@
-[{"name":"Ohio Cannabis Expo — Columbus 2027","start":"2027-05-21","end":"2027-05-21","url":"https://ohiocannabisexpo.com/columbus-2027/"},{"name":"Ohio Cannabis Expo — Dayton 2027","start":"2027-06-11","end":"2027-06-11","url":"https://ohiocannabisexpo.com/dayton-2027/"}]
+[
+  {
+    "name": "Danksgiving Home Growers Meetup",
+    "kind": "meetup",
+    "label": "Community meetup",
+    "start": "2026-11-21",
+    "end": "2026-11-21",
+    "time": "6–10 PM EST",
+    "city": "Columbus",
+    "region": "Central Ohio",
+    "venue": "Exact venue shared after RSVP",
+    "description": "A free home-grow education and networking gathering with food and music. The organizer says RSVP is required and prohibits cannabis sales and on-site consumption.",
+    "age": "21+",
+    "cost": "Free RSVP",
+    "url": "https://ohiocannabislive.com/events/"
+  },
+  {
+    "name": "Ohio Cannabis Expo Columbus",
+    "kind": "expo",
+    "label": "Expo & education",
+    "start": "2027-05-21",
+    "end": "2027-05-21",
+    "time": "1–7 PM",
+    "city": "Columbus",
+    "region": "Central Ohio",
+    "venue": "Crowne Plaza Columbus North–Worthington",
+    "description": "An Ohio cannabis expo with home-grow learning, industry connections and community resources. Columbus Expo admission includes spectator entry to the Ohio Cannabis Car Show.",
+    "age": "21+",
+    "cost": "Check organizer for tickets",
+    "url": "https://ohiocannabisexpo.com/columbus-2027/",
+    "map": "https://www.google.com/maps/search/?api=1&query=Crowne+Plaza+Columbus+North+Worthington"
+  },
+  {
+    "name": "Ohio Cannabis Expo Dayton",
+    "kind": "expo",
+    "label": "Expo & education",
+    "start": "2027-06-11",
+    "end": "2027-06-11",
+    "time": "1–7 PM",
+    "city": "Dayton",
+    "region": "Southwest Ohio",
+    "venue": "Dayton Convention Center",
+    "description": "A Dayton expo planned around exhibitors, education and community resources. The organizer says the event is for adults 21+ and does not allow cannabis sales or on-site consumption.",
+    "age": "21+",
+    "cost": "Check organizer for tickets",
+    "url": "https://ohiocannabisexpo.com/dayton-2027/",
+    "map": "https://www.google.com/maps/search/?api=1&query=Dayton+Convention+Center"
+  }
+]
