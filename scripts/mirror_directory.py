@@ -11,9 +11,11 @@ What it does:
 3. Builds the directory pages with SITE_ORIGIN=https://ohioweed.org.
 4. Copies the Ohio pages, assets, data and exports into this repo.
    OhioWeed's own home, directory, dispensaries, events and rules pages are not touched.
-5. Removes the GoatCounter script (OhioWeed does not track visitors) and points
+5. Removes the directory's click-tracking script (OhioWeed counts page visits with its
+   own counter, added in step 7, so nothing is counted twice) and points
    Pennsylvania and multistate links at weed.vethomeguard.org, where those pages still live.
 6. Checks that every local link and asset resolves, then rewrites sitemap.xml.
+7. Adds the page-visit counter to every page (scripts/add_counter.py).
 """
 import argparse, csv, json, re, shutil, subprocess, sys, tempfile
 from html import escape as html_escape
@@ -24,6 +26,7 @@ HERE = Path(__file__).resolve().parent
 REPO = HERE.parent
 sys.path.insert(0, str(HERE))
 from ohio_filter import filter_directory  # noqa: E402
+from add_counter import add_counter  # noqa: E402
 
 PAGES = ['advocacy', 'ancestry', 'assessment', 'buyer-guide', 'compare', 'expungement', 'intake',
          'knowledge', 'lawmakers', 'locations', 'november-campaign', 'relationships', 'resources',
@@ -283,6 +286,7 @@ def main():
     copy_into(work, args.out.resolve(), ids)
     check_links(args.out.resolve())
     write_sitemap(args.out.resolve())
+    add_counter(args.out.resolve())
     print(f'Mirrored {len(PAGES)} Ohio pages into {args.out}')
 
 
