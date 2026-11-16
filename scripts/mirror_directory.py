@@ -30,6 +30,9 @@ PAGES = ['advocacy', 'ancestry', 'assessment', 'buyer-guide', 'compare', 'expung
          'seeds', 'work-with-travis']
 DATA_FILES = ['directory.json', 'knowledge.json', 'legislators.json', 'public-locations.json',
               'public-organizations.json', 'public-strains.json', 'state-comparison.json']
+# Copied when the directory has them, so a refresh never fails while a new file is
+# still in review there. compare.html loads public-permissions.json for its state switcher.
+OPTIONAL_DATA_FILES = ['public-permissions.json']
 ROOT_FILES = ['ohio-cannabis-directory.csv', 'b2b-relationships.csv', 'seed-suppliers.json']
 FILTERED_CSVS = {'ohio-cannabis-directory.csv', 'b2b-relationships.csv'}
 NOT_MIRRORED = {'state.html', 'pennsylvania-directory.html', 'pennsylvania-advocacy.html', 'directory.html', 'index.html'}
@@ -176,6 +179,11 @@ def copy_into(work: Path, out: Path, ids: set):
     (out / 'data/strains').mkdir(parents=True, exist_ok=True)
     for name in DATA_FILES:
         shutil.copy2(work / 'data' / name, out / 'data' / name)
+    for name in OPTIONAL_DATA_FILES:
+        if (work / 'data' / name).is_file():
+            shutil.copy2(work / 'data' / name, out / 'data' / name)
+        else:
+            print(f'data/{name}: not in the directory yet, skipped')
     for f in (work / 'data/strains').iterdir():
         if f.is_file():
             shutil.copy2(f, out / 'data/strains' / f.name)
