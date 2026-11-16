@@ -91,6 +91,7 @@ SITE_BAR = (
     '<a href="find.html?for=grow" style="color:#d7f080">Grow</a>'
     '<a href="find.html?for=law" style="color:#d7f080">Law &amp; rights</a>'
     '<a href="find.html?for=business" style="color:#d7f080">Business</a>'
+    '<a href="compare.html" style="color:#d7f080">All states</a>'
     '<a href="find.html" style="color:#d7f080">Search the guide</a>'
     '</span></div></div>'
 )
