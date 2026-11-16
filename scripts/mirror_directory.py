@@ -13,7 +13,8 @@ What it does:
    OhioWeed's own home, directory, dispensaries, events and rules pages are not touched.
 5. Removes the directory's click-tracking script (OhioWeed counts page visits with its
    own counter, added in step 7, so nothing is counted twice) and points
-   Pennsylvania and multistate links at weed.vethomeguard.org, where those pages still live.
+   Pennsylvania and multistate links at the-reefer.com, the national site where those pages live
+   (weed.vethomeguard.org is retired and only forwards; owner direction, November 16, 2026).
 6. Checks that every local link and asset resolves, then rewrites sitemap.xml.
 7. Adds the page-visit counter to every page (scripts/add_counter.py).
 """
@@ -39,7 +40,7 @@ OPTIONAL_DATA_FILES = ['public-permissions.json']
 ROOT_FILES = ['ohio-cannabis-directory.csv', 'b2b-relationships.csv', 'seed-suppliers.json']
 FILTERED_CSVS = {'ohio-cannabis-directory.csv', 'b2b-relationships.csv'}
 NOT_MIRRORED = {'state.html', 'pennsylvania-directory.html', 'pennsylvania-advocacy.html', 'directory.html', 'index.html'}
-WEED = 'https://weed.vethomeguard.org/'
+WEED = 'https://the-reefer.com/'
 SITE = 'https://ohioweed.org'
 # Pages written in this repo rather than mirrored from the directory. They are
 # never overwritten by a refresh, and they belong in the sitemap alongside the
@@ -261,8 +262,8 @@ def check_links(out: Path):
                 continue  # inline JavaScript string built in a template, not a link
             if path and path not in own:
                 problems.append(f'{name}.html -> {target}')
-        if 'weed.vethomeguard.org' in text and WEED not in text:
-            problems.append(f'{name}.html has a weed.vethomeguard.org reference that is not the Pennsylvania link')
+        if 'weed.vethomeguard.org' in text:
+            problems.append(f'{name}.html still links to the retired weed.vethomeguard.org')
     if problems:
         raise SystemExit('Broken or unexpected links:\n' + '\n'.join(sorted(set(problems))[:40]))
 
