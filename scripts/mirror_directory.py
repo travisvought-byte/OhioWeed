@@ -45,7 +45,7 @@ SITE = 'https://ohioweed.org'
 # Pages written in this repo rather than mirrored from the directory. They are
 # never overwritten by a refresh, and they belong in the sitemap alongside the
 # mirrored ones.
-OWN_PAGES = {'index.html', 'directory.html', 'dispensaries.html', 'events.html', 'rules.html',
+OWN_PAGES = {'index.html', 'directory.html', 'dispensaries.html', 'events.html', 'rules.html', 'medical.html',
              'mjbizcon.html', 'veteran-grow.html', 'find.html', 'join.html'}
 
 
@@ -98,7 +98,8 @@ SITE_BAR = (
     '<a href="find.html?for=grow" style="color:#d7f080">Grow</a>'
     '<a href="find.html?for=law" style="color:#d7f080">Law &amp; rights</a>'
     '<a href="find.html?for=business" style="color:#d7f080">Business</a>'
-    '<a href="compare.html" style="color:#d7f080">All states</a>'
+    '<a href="medical.html" style="color:#d7f080">Medical card</a>'
+    '<a href="https://the-reefer.com/" style="color:#d7f080">All states</a>'
     '<a href="find.html" style="color:#d7f080">Search the guide</a>'
     '</span></div></div>'
 )
