@@ -17,8 +17,6 @@ What it does:
    (weed.vethomeguard.org is retired and only forwards; owner direction, November 16, 2026).
 6. Checks that every local link and asset resolves, then rewrites sitemap.xml.
 7. Adds the page-visit counter to every page (scripts/add_counter.py).
-8. Makes sure every page carries the suicide and homelessness help block
-   (scripts/add_help.py): mirrored pages bring it with them, this repo's own pages get it here.
 """
 import argparse, csv, json, re, shutil, subprocess, sys, tempfile
 from html import escape as html_escape
@@ -30,7 +28,6 @@ REPO = HERE.parent
 sys.path.insert(0, str(HERE))
 from ohio_filter import filter_directory  # noqa: E402
 from add_counter import add_counter  # noqa: E402
-from add_help import add_help  # noqa: E402
 
 PAGES = ['advocacy', 'ancestry', 'assessment', 'buyer-guide', 'compare', 'expungement', 'intake',
          'knowledge', 'lawmakers', 'locations', 'november-campaign', 'relationships', 'resources',
@@ -292,7 +289,6 @@ def main():
     check_links(args.out.resolve())
     write_sitemap(args.out.resolve())
     add_counter(args.out.resolve())
-    add_help(args.out.resolve())
     print(f'Mirrored {len(PAGES)} Ohio pages into {args.out}')
 
 
