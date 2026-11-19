@@ -107,6 +107,8 @@ HEAD_ICON = '<link rel="icon" href="favicon.svg"><link rel="apple-touch-icon" hr
 
 
 CARD = SITE + '/assets/og-card.png'
+# Pages that share their own picture instead of the site card: (image, width, height).
+CARDS = {'advocacy': (SITE + '/assets/ohio-what-changed.jpg', 1536, 1024)}
 
 # These pages ship a generic site-wide description from the directory build, so five of
 # them end up identical. Search engines discount duplicates, so each gets its own line.
@@ -142,11 +144,12 @@ def brand_page(text: str, name: str) -> str:
         head += f'<link rel="canonical" href="{url}">'
     if not re.search(r'<meta property="og:url"', text):
         head += f'<meta property="og:url" content="{url}">'
-    head += (f'<meta property="og:image" content="{CARD}">'
-             '<meta property="og:image:width" content="1200">'
-             '<meta property="og:image:height" content="630">'
+    card, card_w, card_h = CARDS.get(name, (CARD, 1200, 630))
+    head += (f'<meta property="og:image" content="{card}">'
+             f'<meta property="og:image:width" content="{card_w}">'
+             f'<meta property="og:image:height" content="{card_h}">'
              '<meta name="twitter:card" content="summary_large_image">'
-             f'<meta name="twitter:image" content="{CARD}">')
+             f'<meta name="twitter:image" content="{card}">')
     if title:
         head += f'<meta name="twitter:title" content="{html_escape(title.group(1))}">'
     if found:
