@@ -84,25 +84,116 @@ NOTE_OLD = 'Your state/topic choices are not included in analytics events.'
 NOTE_NEW = 'Your state/topic choices are not stored or sent anywhere.'
 
 
-# A slim OhioWeed bar sits above each mirrored page, so the directory pages read as
-# part of this site rather than a separate one. Styles are inline: the mirrored pages
-# ship their own stylesheet and must not depend on OhioWeed's.
-SITE_BAR = (
-    '<div style="background:#173e34;color:#f5f2e9;font:14px/1.45 Inter,ui-sans-serif,system-ui,sans-serif">'
-    '<div style="max-width:1120px;margin:0 auto;padding:9px 18px;display:flex;flex-wrap:wrap;align-items:center;gap:6px 18px">'
-    '<a href="index.html" style="display:flex;align-items:center;gap:9px;color:#fff;text-decoration:none;font-weight:700">'
-    '<img src="favicon.svg" alt="" width="26" height="26" style="border-radius:7px;display:block">OhioWeed</a>'
-    '<span style="opacity:.62">The Ohio cannabis guide</span>'
-    '<span style="margin-left:auto;display:flex;flex-wrap:wrap;gap:8px 16px">'
-    '<a href="dispensaries.html" style="color:#d7f080">Dispensaries</a>'
-    '<a href="find.html?for=grow" style="color:#d7f080">Grow</a>'
-    '<a href="find.html?for=law" style="color:#d7f080">Law &amp; rights</a>'
-    '<a href="find.html?for=business" style="color:#d7f080">Business</a>'
-    '<a href="medical.html" style="color:#d7f080">Medical card</a>'
-    '<a href="https://the-reefer.com/" style="color:#d7f080">All states</a>'
-    '<a href="find.html" style="color:#d7f080">Search the guide</a>'
-    '</span></div></div>'
+# The mirrored pages wear OhioWeed's own header, page hero and footer, and take its colors
+# and type from assets/ow-theme.css (loaded after each page's own styles), so they read as
+# part of this site rather than a separate one. The directory's own brand line and page
+# menu (VHG logo, "Ohio Cannabis Directory", a Pennsylvania button) are removed here.
+# Owner direction, November 20, 2026: make OhioWeed better visually.
+OW_HEADER = (
+    '<header class="ow-header"><div class="ow-nav">'
+    '<a class="ow-brand" href="index.html"><img src="favicon.svg" alt="" width="36" height="36">'
+    '<span>OhioWeed<small>The Ohio cannabis guide</small></span></a>'
+    '<button class="ow-menu" type="button" aria-expanded="false" aria-controls="ow-links">Menu</button>'
+    '<nav id="ow-links" class="ow-links" aria-label="Main navigation">'
+    '<a href="dispensaries.html">Dispensaries</a><a href="events.html">Events</a>'
+    '<a href="find.html?for=grow">Grow</a><a href="find.html?for=law">Law &amp; rights</a>'
+    '<a href="find.html?for=business">Business</a><a href="medical.html">Medical card</a>'
+    '<a href="https://the-reefer.com/">All states</a></nav>'
+    '<form class="ow-search" action="find.html" method="get" role="search">'
+    '<label class="ow-sr" for="ow-q">Search the guide</label>'
+    '<input id="ow-q" name="q" type="search" placeholder="Search the guide" autocomplete="off">'
+    '<button type="submit" aria-label="Search"><span aria-hidden="true">→</span></button></form>'
+    '</div></header>'
+    '<script>(()=>{const b=document.querySelector(".ow-menu"),n=document.getElementById("ow-links");'
+    'if(b&&n)b.addEventListener("click",()=>{const o=n.classList.toggle("open");b.setAttribute("aria-expanded",o)})})();</script>'
 )
+OW_FOOTER = (
+    '<footer class="ow-footer"><div class="ow-footer-wrap"><div class="ow-footer-grid"><div>'
+    '<a class="ow-brand" href="index.html"><img src="favicon.svg" alt="" width="36" height="36">'
+    '<span>OhioWeed<small>The Ohio cannabis guide</small></span></a>'
+    '<p>An independent, source-linked guide to Ohio cannabis organizations, licensed locations, public resources, '
+    'events and state rules. It is not an endorsement, legal or medical advice, or a substitute for current official information.</p></div>'
+    '<nav class="ow-footer-links" aria-label="Footer">'
+    '<a href="find.html">Find what you need</a><a href="directory.html">Business directory</a>'
+    '<a href="dispensaries.html">Dispensary lookup</a><a href="events.html">Ohio events</a>'
+    '<a href="rules.html">Rules and resources</a><a href="medical.html">Medical card</a>'
+    '<a href="knowledge.html">Learn</a><a href="buyer-guide.html">Shop smart</a><a href="ancestry.html">Strains</a>'
+    '<a href="seeds.html">Seeds &amp; growing</a><a href="expungement.html">Record clearing</a>'
+    '<a href="advocacy.html">Advocacy</a><a href="lawmakers.html">Your lawmakers</a><a href="compare.html">Compare states</a>'
+    '<a href="relationships.html">Who works with whom</a><a href="assessment.html">Business self-check</a>'
+    '<a href="veteran-grow.html">Veteran growers</a><a href="join.html">Event email</a>'
+    '<a href="https://github.com/travisvought-byte/OhioWeed/issues/new">Suggest a correction</a></nav></div>'
+    '<div class="ow-copy">© 2026 OhioWeed.org · Independent guide · Data attribution: “Ohio Cannabis Ecosystem Directory, '
+    'compiled by Travis Vought.” Licensed data reused under CC BY 4.0. <a href="SITE_DATA.md">Source and reuse notes</a></div>'
+    '</div></footer>'
+)
+OW_THEME = '<link rel="stylesheet" href="assets/ow-theme.css">'
+# The directory's own brand line, page menu and the little script that closes that menu.
+DIRECTORY_CHROME = re.compile(
+    r'<a class="vhg-brand"[^>]*>.*?</a>\s*'
+    r'(?:<nav class="knowledge-links site-nav"[^>]*>.*?</details></nav>\s*'
+    r'(?:<script>\(\(\)=>\{const close=.*?</script>\s*)?)?', re.S)
+BACK_LINK = re.compile(r'\s*(?:<p(?: class="back")?>\s*<a href="index\.html">←[^<]*</a>(?:\s*·\s*<a [^>]*>[^<]*</a>)*\s*</p>|<a href="index\.html">←[^<]*</a>)')
+LEAD = re.compile(r'\s*<p(?: class="(?:lead|sub|buyer-intro|stat-line)")?>(?:(?!</p>).)*</p>', re.S)
+
+
+def hero(body: str) -> str:
+    """Move the page's title, its eyebrow line and its opening sentence into an OhioWeed hero.
+
+    Only plain cases move: an <h1> with, just before it, an optional eyebrow paragraph (review
+    date or topic tag) and, just after it, an optional plain or lead paragraph. Anything else
+    stays where the page put it, so a page with unusual markup keeps its title in place."""
+    m = re.search(r'<main\b[^>]*>', body)
+    if not m:
+        return body
+    h1 = re.compile(r'<h1\b[^>]*>.*?</h1>', re.S).search(body, m.end())
+    if not h1:
+        return body
+    start, end = h1.start(), h1.end()
+    before = body[m.end():start]
+    eyebrow = ''
+    tail = re.search(r'(<p class="(?:review|tag|eyebrow)"[^>]*>(?:(?!</p>).)*</p>)\s*$', before, re.S)
+    if tail:
+        eyebrow = tail.group(1)
+        start = m.end() + tail.start()
+    lead = ''
+    after = LEAD.match(body, end)
+    if after and len(re.sub(r'<[^>]+>', '', after.group(0)).strip()) <= 320 and '<form' not in after.group(0):
+        lead = after.group(0).strip()
+        end = after.end()
+    crumbs = '<p class="ow-crumbs"><a href="index.html">Home</a></p>'
+    eyebrow_html = re.sub(r'^<p class="[^"]*"', '<p class="ow-eyebrow"', eyebrow) if eyebrow else ''
+    lead_html = re.sub(r'^<p class="[^"]*"', '<p', lead) if lead else ''
+    section = (f'<section class="ow-hero"><div class="ow-hero-in">{crumbs}{eyebrow_html}'
+               f'{body[h1.start():h1.end()]}{lead_html}</div></section>')
+    body = body[:start] + body[end:]
+    return body[:m.start()] + section + body[m.start():]
+
+
+# The directory's accent colors, swapped for OhioWeed's inside each mirrored page's own styles:
+# its reds and its blue become OhioWeed's greens, its grey background OhioWeed's cream.
+COLOR_SWAP = {'#a90000': '#255a4a', '#ba0c2f': '#255a4a', '#8c0924': '#173e34', '#9d0927': '#173e34',
+              '#70071c': '#173e34', '#215b76': '#173e34', '#f5f5f3': '#f5f2e9'}
+COLOR_RE = re.compile('|'.join(COLOR_SWAP), re.I)
+
+
+def recolor(text: str) -> str:
+    return re.sub(r'(<style[^>]*>)(.*?)(</style>)',
+                  lambda m: m.group(1) + COLOR_RE.sub(lambda c: COLOR_SWAP[c.group(0).lower()], m.group(2)) + m.group(3),
+                  text, flags=re.S)
+
+
+def dress_page(text: str) -> str:
+    """OhioWeed header, hero and footer for a mirrored page, in place of the directory's own top."""
+    text = recolor(text)
+    text = DIRECTORY_CHROME.sub('', text, count=1)
+    text = BACK_LINK.sub('', text, count=1)
+    text = hero(text)
+    text = text.replace('</head>', OW_THEME + '</head>', 1)
+    text = re.sub(r'(<body[^>]*>)', lambda m: m.group(1) + OW_HEADER, text, count=1)
+    return text.replace('</body>', OW_FOOTER + '</body>', 1)
+
+
 HEAD_ICON = '<link rel="icon" href="favicon.svg"><link rel="apple-touch-icon" href="favicon.svg">'
 
 
@@ -127,7 +218,7 @@ DESCRIPTIONS = {
 
 
 def brand_page(text: str, name: str) -> str:
-    """Give a mirrored page OhioWeed's icon, tab title, canonical URL, share card and top bar."""
+    """Give a mirrored page OhioWeed's icon, tab title, canonical URL, share card, header, hero and footer."""
     text = re.sub(r'(<title>[^<]*?)\s*\|\s*Ohio Cannabis Directory(</title>)', r'\1 | OhioWeed\2', text)
     text = re.sub(r'(<meta property="og:title" content="[^"]*?)\s*\|\s*Ohio Cannabis Directory(")', r'\1 | OhioWeed\2', text)
 
@@ -156,7 +247,7 @@ def brand_page(text: str, name: str) -> str:
         head += f'<meta name="twitter:description" content="{found.group(1)}">'
 
     text = text.replace('<head>', '<head>' + head, 1)
-    return re.sub(r'(<body[^>]*>)', lambda m: m.group(1) + SITE_BAR, text, count=1)
+    return dress_page(text)
 
 def clean_page(text: str, name: str) -> str:
     text = re.sub(r'<script\b[^>]*\bsrc="assets/analytics\.js"[^>]*>\s*</script>\s*', '', text)
