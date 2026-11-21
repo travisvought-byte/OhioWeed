@@ -2,7 +2,7 @@
 """Add the visit counter to every OhioWeed page. Idempotent; safe to rerun.
 
 Owner direction, November 16, 2026: every site reports page visits to the shared
-GoatCounter dashboard (travisvought.goatcounter.com). OhioWeed's paths start
+GoatCounter dashboard (vhg-guide.goatcounter.com). OhioWeed's paths start
 /ohioweed.org/ so they never mix with the other sites there. Page visits only:
 no cookies, no storage, no click or form data, and query strings are dropped from
 paths and referrers. The directory's own click-tracking script stays removed
@@ -16,7 +16,7 @@ from pathlib import Path
 
 COUNTER = ('<!--gc--><script>window.goatcounter={path:function(){return "/ohioweed.org"+location.pathname},'
            'referrer:function(){try{var u=new URL(document.referrer);return u.origin+u.pathname}catch(e){return ""}}};</script>'
-           '<script data-goatcounter="https://travisvought.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script><!--/gc-->')
+           '<script data-goatcounter="https://vhg-guide.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script><!--/gc-->')
 
 
 def add_counter(out: Path) -> int:
