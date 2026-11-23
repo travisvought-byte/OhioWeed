@@ -201,20 +201,10 @@ CARD = SITE + '/assets/og-card.png'
 # Pages that share their own picture instead of the site card: (image, width, height).
 CARDS = {'advocacy': (SITE + '/assets/ohio-what-changed.jpg', 1536, 1024)}
 
-# These pages ship a generic site-wide description from the directory build, so five of
-# them end up identical. Search engines discount duplicates, so each gets its own line.
-DESCRIPTIONS = {
-    'ancestry': 'Browse cannabis strain profiles with Ohio flower listings and producer genetics, '
-                "drawn from Ohio producers' published catalogs and general strain references.",
-    'assessment': 'A 33-question self-check for Ohio cannabis businesses preparing for banking, '
-                  'financing or an internal review. Score what you can document today.',
-    'buyer-guide': 'New to cannabis? Build a short dispensary shopping plan you can show the person '
-                   'helping you, then download or print it before you go.',
-    'intake': 'Add an Ohio cannabis organization to the directory or send a correction. Entries stay '
-              'on your device until you export them.',
-    'locations': 'Search Ohio dispensary addresses by city or county and compare nearby locations, '
-                 'with links to verify current license status with the state.',
-}
+# Each mirrored page now carries its own description from the directory build
+# (ohio-cannabis-directory data/landing-pages.json, November 23, 2026), so nothing is overridden here.
+# An entry added below would replace that page's description and share-card text.
+DESCRIPTIONS = {}
 
 
 def brand_page(text: str, name: str) -> str:

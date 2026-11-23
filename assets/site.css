@@ -105,3 +105,6 @@ img.brand-mark{background:none;border-radius:10px;object-fit:contain}
 .page-hero:after{content:'';position:absolute;z-index:0;right:-170px;top:-200px;width:470px;height:470px;
   border:1px solid #ffffff1c;border-radius:50%;box-shadow:0 0 0 42px #ffffff09,0 0 0 96px #ffffff07;pointer-events:none}
 @media(max-width:860px){.page-hero:before{right:-104px;width:250px;height:250px;opacity:.06}.page-hero:after{display:none}}
+
+/* "I'm here to…" chooser on the home page: the heading link covers the card, the next stops sit above it. */
+.here-card{position:relative}.here-card h3 a.here-go{color:inherit;text-decoration:none}.here-card h3 a.here-go::after{content:"";position:absolute;inset:0;border-radius:20px}.here-card:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(23,62,52,.1)}.here-card:focus-within{outline:3px solid var(--pine);outline-offset:2px}.here-card h3 a.here-go:focus-visible{outline:none}.here-more{position:relative;z-index:1;margin-top:auto;display:flex;flex-wrap:wrap;gap:0 14px;font-size:.86rem;font-weight:700}.here-more a{color:var(--pine);min-height:36px;display:inline-flex;align-items:center}

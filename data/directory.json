@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0.0",
   "scope": "directory",
-  "as_of": "2026-11-09",
+  "as_of": "2026-11-23",
   "organizations": [
     {
       "id": "org-6f5375e74696",
@@ -62968,10 +62968,10 @@
         },
         {
           "pathway_id": "community",
-          "coverage_status": "partial",
+          "coverage_status": "broad",
           "next_step": "Reach a group contact or event participation page.",
           "public_url": "https://weed.vethomeguard.org/resources.html#community",
-          "limitations": "Starter referral coverage; organization service areas remain historical text unless backed by claim-level coverage evidence. No complete statewide location list has been migrated."
+          "limitations": "Thirteen Ohio groups and two upcoming events, each from the group's or organizer's own page. Meeting times and membership terms need direct confirmation with each group."
         }
       ]
     }
