@@ -42,6 +42,10 @@ jobs:
         working-directory: OhioWeed
         run: python3 scripts/mirror_directory.py ../ohio-cannabis-directory --out .
 
+      - name: Rebuild the plain dispensary list
+        working-directory: OhioWeed
+        run: python3 scripts/build_dispensary_list.py
+
       - name: Commit the refresh
         id: commit
         working-directory: OhioWeed
