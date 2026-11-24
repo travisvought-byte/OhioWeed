@@ -17,6 +17,8 @@ What it does:
    (weed.vethomeguard.org is retired and only forwards; owner direction, November 16, 2026).
 6. Checks that every local link and asset resolves, then rewrites sitemap.xml.
 7. Adds the page-visit counter to every page (scripts/add_counter.py).
+8. Puts a "Skip to main content" link first on every page, ahead of the OhioWeed header
+   (scripts/a11y.py).
 """
 import argparse, csv, json, re, shutil, subprocess, sys, tempfile
 from html import escape as html_escape
@@ -28,6 +30,7 @@ REPO = HERE.parent
 sys.path.insert(0, str(HERE))
 from ohio_filter import filter_directory  # noqa: E402
 from add_counter import add_counter  # noqa: E402
+from a11y import finish_site  # noqa: E402
 
 PAGES = ['advocacy', 'ancestry', 'assessment', 'buyer-guide', 'compare', 'expungement', 'intake',
          'knowledge', 'lawmakers', 'locations', 'november-campaign', 'relationships', 'resources',
@@ -373,6 +376,7 @@ def main():
     check_links(args.out.resolve())
     write_sitemap(args.out.resolve())
     add_counter(args.out.resolve())
+    finish_site(args.out.resolve())
     print(f'Mirrored {len(PAGES)} Ohio pages into {args.out}')
 
 
