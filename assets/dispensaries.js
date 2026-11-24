@@ -129,7 +129,7 @@
     if (dots[i]) dots[i].classList.add('is-active');
     sizeDots();
     $('map-panel').innerHTML =
-      '<div class="panel-card"><h3>' + esc(x.name) + '</h3>' +
+      '<div class="panel-card"><h2>' + esc(x.name) + '</h2>' +
       '<p class="coverage">' + esc(place(x)) + '</p>' +
       (x.phone ? '<p>Snapshot phone: <a href="tel:' + esc(x.phone.replace(/[^+\d]/g, '')) + '">' + esc(x.phone) + '</a></p>' : '') +
       (x.lic ? '<p class="result-meta">License record: ' + esc(x.lic) + '</p>' : '') +
@@ -139,7 +139,7 @@
   function clearPanel() {
     if (active > -1 && dots[active]) dots[active].classList.remove('is-active');
     active = -1; sizeDots();
-    $('map-panel').innerHTML = '<div class="panel-card panel-hint"><h3>Pick a spot</h3>' +
+    $('map-panel').innerHTML = '<div class="panel-card panel-hint"><h2>Pick a spot</h2>' +
       '<p>Tap anywhere on the map to see the closest location, with its address, phone and license record.</p></div>';
   }
 
