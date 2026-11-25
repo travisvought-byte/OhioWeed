@@ -49,7 +49,7 @@ SITE = 'https://ohioweed.org'
 # never overwritten by a refresh, and they belong in the sitemap alongside the
 # mirrored ones.
 OWN_PAGES = {'index.html', 'directory.html', 'dispensaries.html', 'events.html', 'rules.html', 'medical.html',
-             'mjbizcon.html', 'veteran-grow.html', 'find.html', 'join.html'}
+             'mjbizcon.html', 'veteran-grow.html', 'find.html', 'join.html', 'news.html'}
 
 
 def ohio_org_ids(src: Path) -> set:
@@ -98,7 +98,7 @@ OW_HEADER = (
     '<span>OhioWeed<small>The Ohio cannabis guide</small></span></a>'
     '<button class="ow-menu" type="button" aria-expanded="false" aria-controls="ow-links">Menu</button>'
     '<nav id="ow-links" class="ow-links" aria-label="Main navigation">'
-    '<a href="dispensaries.html">Dispensaries</a><a href="events.html">Events</a>'
+    '<a href="dispensaries.html">Dispensaries</a><a href="news.html">News &amp; dates</a><a href="events.html">Events</a>'
     '<a href="find.html?for=grow">Grow</a><a href="find.html?for=law">Law &amp; rights</a>'
     '<a href="find.html?for=business">Business</a><a href="medical.html">Medical card</a>'
     '<a href="https://the-reefer.com/">All states</a></nav>'
@@ -118,7 +118,7 @@ OW_FOOTER = (
     'events and state rules. It is not an endorsement, legal or medical advice, or a substitute for current official information.</p></div>'
     '<nav class="ow-footer-links" aria-label="Footer">'
     '<a href="find.html">Find what you need</a><a href="directory.html">Business directory</a>'
-    '<a href="dispensaries.html">Dispensary lookup</a><a href="events.html">Ohio events</a>'
+    '<a href="dispensaries.html">Dispensary lookup</a><a href="news.html">News and key dates</a><a href="events.html">Ohio events</a>'
     '<a href="rules.html">Rules and resources</a><a href="medical.html">Medical card</a>'
     '<a href="knowledge.html">Learn</a><a href="buyer-guide.html">Shop smart</a><a href="ancestry.html">Strains</a>'
     '<a href="seeds.html">Seeds &amp; growing</a><a href="expungement.html">Record clearing</a>'
