@@ -41,6 +41,12 @@ jobs:
         working-directory: OhioWeed
         run: python3 scripts/build_dispensary_list.py
 
+      # Drops dates that have passed, so the news page and the home page's
+      # "Coming up" panel always lead with what is next.
+      - name: Rebuild the news and key dates page
+        working-directory: OhioWeed
+        run: python3 scripts/build_key_dates.py
+
       - name: Commit the refresh
         id: commit
         working-directory: OhioWeed

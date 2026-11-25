@@ -1,0 +1,107 @@
+{
+  "updated": "2026-11-25",
+  "events_checked": "2026-11-25",
+  "note": "Upcoming dates and recent Ohio cannabis news for news.html. Each item cites the page it was read on. Dates that pass drop off on the next build; news stays 60 days.",
+  "items": [
+    {
+      "date": "2026-12-02",
+      "kind": "clinic",
+      "title": "Free record-sealing clinic in Cincinnati",
+      "what_it_means": "The Hamilton County Public Defender's Fresh Start clinic meets the first and third Wednesday afternoon of each month downtown. Staff check whether a record can be sealed or expunged. You need an appointment; the clinic page explains how to book.",
+      "who": "Hamilton County Public Defender",
+      "source_url": "https://www.hamiltoncountypd.org/fresh-start/",
+      "source_name": "Hamilton County Public Defender",
+      "checked": "2026-11-25"
+    },
+    {
+      "date": "2026-12-16",
+      "kind": "clinic",
+      "title": "Free record-sealing clinic in Cincinnati",
+      "what_it_means": "The next Fresh Start clinic after December 2, on the third Wednesday. An old Ohio marijuana or hashish possession case can be expunged at any time under the 2026 law, and the court fee can be waived if you can't afford it. Book through the clinic page.",
+      "who": "Hamilton County Public Defender",
+      "source_url": "https://www.hamiltoncountypd.org/fresh-start/",
+      "source_name": "Hamilton County Public Defender",
+      "checked": "2026-11-25"
+    },
+    {
+      "date": "2026-12-11",
+      "kind": "effective",
+      "title": "Federal hemp THC limit takes effect",
+      "what_it_means": "Hemp products with more than 0.4 mg of total THC per container lose federal legal status unless Congress acts first. In Ohio, intoxicating hemp is already limited to licensed dispensaries under SB 56, so expect fewer hemp THC drinks and gummies on sale.",
+      "who": "U.S. Congress",
+      "source_url": "https://www.marijuanamoment.net/first-phase-of-renewed-federal-hemp-product-ban-takes-effect-as-industry-pushes-congress-for-regulatory-alternative/",
+      "source_name": "Marijuana Moment",
+      "checked": "2026-11-25"
+    },
+    {
+      "date": "2027-06-01",
+      "kind": "deadline",
+      "title": "New packaging and label rules apply to every product",
+      "what_it_means": "By this date, every product shipped to an Ohio dispensary must carry the universal THC symbol and the Division of Cannabis Control seal, with warnings printed on the package itself and child-resistant, tamper-evident packaging. Producers are switching over before then, so new labels will start showing up on shelves.",
+      "who": "Ohio Division of Cannabis Control",
+      "source_url": "https://dam.assets.ohio.gov/image/upload/com.ohio.gov/DCC/Newsletters/Packaging_Labeling_Rule_Update_-_August_2026.pdf",
+      "source_name": "Ohio Division of Cannabis Control",
+      "checked": "2026-11-25"
+    },
+    {
+      "date": "2026-11-24",
+      "kind": "news",
+      "title": "Nearly 200 Ohio communities still block dispensaries",
+      "what_it_means": "Your city or township decides whether a dispensary can open there. Nearly 200 Ohio communities have moratoriums, while Hamilton and about 20 other southwest Ohio communities have said yes. Check your local rules before counting on a store nearby.",
+      "who": "WVXU and WOSU",
+      "source_url": "https://www.wosu.org/2026-11-24/heres-why-these-sw-ohio-communities-have-said-yes-and-no-to-dispensaries",
+      "source_name": "WOSU",
+      "checked": "2026-11-25"
+    },
+    {
+      "date": "2026-11-12",
+      "kind": "news",
+      "title": "First phase of the federal hemp crackdown began",
+      "what_it_means": "Hemp products made with synthetic cannabinoids the plant can't produce on its own are no longer federally legal. The wider limit on hemp THC per container follows on December 11.",
+      "who": "U.S. Congress",
+      "source_url": "https://www.marijuanamoment.net/first-phase-of-renewed-federal-hemp-product-ban-takes-effect-as-industry-pushes-congress-for-regulatory-alternative/",
+      "source_name": "Marijuana Moment",
+      "checked": "2026-11-25"
+    },
+    {
+      "date": "2026-10-30",
+      "kind": "news",
+      "title": "Ohio medical cannabis businesses apply for federal registration",
+      "what_it_means": "With state-licensed medical marijuana moved to Schedule III, DEA's list shows 125 Ohio dispensaries, 8 distributors and 27 manufacturers applied for federal registration. Businesses that applied in time keep operating under their state license while DEA reviews them.",
+      "who": "U.S. Drug Enforcement Administration",
+      "source_url": "https://www.marijuanamoment.net/nearly-7000-marijuana-businesses-have-applied-for-federal-protections-under-trumps-rescheduling-move-new-dea-list-shows/",
+      "source_name": "Marijuana Moment",
+      "checked": "2026-11-25"
+    },
+    {
+      "date": "2026-10-07",
+      "kind": "news",
+      "title": "New package and potency limits on adult-use products",
+      "what_it_means": "Adult-use products are now capped at 90% THC. Flower is limited to 1 ounce per package, edibles to 10 mg per serving and 100 mg per package, and vapes to three 2-gram units per package. Expect smaller packages and possibly higher prices per milligram.",
+      "who": "Ohio Division of Cannabis Control",
+      "source_url": "https://abc6onyourside.com/news/local/less-thc-for-more-money-what-ohios-new-marijuana-rules-mean-for-customers-ohio-cannabis-company-vapes-concentrates-flower-edibles-weed-pot-gummies-dispensaries",
+      "source_name": "ABC 6 On Your Side",
+      "checked": "2026-11-25"
+    },
+    {
+      "date": "2026-10-05",
+      "kind": "news",
+      "title": "Updated cannabis advertising rule took effect",
+      "what_it_means": "Licensed businesses now follow the revised advertising rule. The Division of Cannabis Control has up to 21 business days to approve, deny or return each ad, so build that time into marketing plans.",
+      "who": "Ohio Division of Cannabis Control",
+      "source_url": "https://dam.assets.ohio.gov/image/upload/com.ohio.gov/DCC/Newsletters/Advertising_Guidance_Update_-_10.2026.pdf",
+      "source_name": "Ohio Division of Cannabis Control",
+      "checked": "2026-11-25"
+    },
+    {
+      "date": "2026-09-26",
+      "kind": "news",
+      "title": "Appeals court lets Ohio enforce part of its hemp limits",
+      "what_it_means": "The Sixth Circuit partly paused an order that had shielded ten out-of-state hemp drink makers, so Ohio can enforce some of its hemp limits against them while the appeal continues. Hemp drinks sold outside dispensaries remain legally uncertain.",
+      "who": "U.S. Court of Appeals for the Sixth Circuit",
+      "source_url": "https://www.forbes.com/sites/dariosabaghi/2026/09/26/federal-appeals-court-limits-injunction-against-ohio-hemp-restrictions/",
+      "source_name": "Forbes",
+      "checked": "2026-11-25"
+    }
+  ]
+}

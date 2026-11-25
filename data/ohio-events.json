@@ -1,1 +1,20 @@
-[{"name":"Ohio Cannabis Expo — Columbus 2027","start":"2027-05-21","end":"2027-05-21","url":"https://ohiocannabisexpo.com/columbus-2027/"},{"name":"Ohio Cannabis Expo — Dayton 2027","start":"2027-06-11","end":"2027-06-11","url":"https://ohiocannabisexpo.com/dayton-2027/"}]
+[
+ {
+  "name": "Ohio Cannabis Expo — Columbus 2027",
+  "start": "2027-05-21",
+  "end": "2027-05-21",
+  "url": "https://ohiocannabisexpo.com/columbus-2027/"
+ },
+ {
+  "name": "Ohio Cannabis Expo — Dayton 2027",
+  "start": "2027-06-11",
+  "end": "2027-06-11",
+  "url": "https://ohiocannabisexpo.com/dayton-2027/"
+ },
+ {
+  "name": "Ohio Cannabis Health & Business Summit — Cleveland 2027",
+  "start": "2027-09-24",
+  "end": "2027-09-25",
+  "url": "https://ochbs.com/"
+ }
+]
