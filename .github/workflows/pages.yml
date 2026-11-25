@@ -1,7 +1,7 @@
 name: Deploy OhioWeed to GitHub Pages
+# GitHub's own Pages build already publishes every push to main. This workflow
+# stays as a manual fallback only, so the two never race on a push.
 on:
-  push:
-    branches: [main]
   workflow_dispatch:
 permissions:
   contents: read

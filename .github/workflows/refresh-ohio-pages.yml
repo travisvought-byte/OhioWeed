@@ -7,8 +7,6 @@ on:
 
 permissions:
   contents: write
-  pages: write
-  id-token: write
 
 # Shares the deploy workflow's group so the two never publish at once.
 concurrency:
@@ -17,9 +15,6 @@ concurrency:
 
 jobs:
   refresh:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -64,16 +59,6 @@ jobs:
           git push origin HEAD:main
           echo "changed=true" >> "$GITHUB_OUTPUT"
 
-      # A push made with the built-in token does not start other workflows, so the
-      # deploy happens here rather than waiting for pages.yml to notice.
-      - uses: actions/configure-pages@v5
-        if: steps.commit.outputs.changed == 'true'
-
-      - uses: actions/upload-pages-artifact@v3
-        if: steps.commit.outputs.changed == 'true'
-        with:
-          path: OhioWeed
-
-      - id: deployment
-        uses: actions/deploy-pages@v4
-        if: steps.commit.outputs.changed == 'true'
+      # GitHub's own Pages build publishes every push to main, including this one,
+      # so this job does not deploy. Deploying here too made two publishers race,
+      # and the loser failed the run even though the site updated.
