@@ -1,0 +1,47 @@
+/* Easy reading for every OhioWeed page. Loaded last on each page, so it wins over the page's own styles.
+   Owner direction, November 26, 2026: many visitors are older, so the site reads larger, with high
+   contrast, big tap targets and plain labels, within WCAG 2.1 AA. Change sizes here, not page by page. */
+
+/* Larger default text: 18px base, everything sized in rem grows with it. */
+html{font-size:112.5%}
+body{font-size:1rem!important;line-height:1.65!important}
+p,li,td,th,dd,dt,label,input,select,textarea,button{font-size:max(1rem,1em)}
+small,.small,figcaption{font-size:.9rem!important}
+
+/* Higher contrast for grey and faded text. */
+:root{--muted:#3d4a44!important;--ow-muted:#3d4a44!important}
+.section-head p,.path-card p,.ow-crumbs{color:#2f3b36!important}
+.brand small,.ow-brand small{font-size:.72rem!important;letter-spacing:.06em!important;color:#3d4a44!important}
+.site-footer p,.ow-footer p,.site-footer small,.ow-copy{color:#eef3ea!important;font-size:.95rem!important}
+.site-footer a,.ow-footer a{color:#fff!important}
+.hero p,.ow-hero p{color:#f2f6f1!important;font-size:1.15rem!important}
+.eyebrow,.ow-eyebrow{font-size:.85rem!important;letter-spacing:.08em!important}
+
+/* Headings without squeezed letters. */
+h1,h2,h3,.hero h1,.ow-hero h1,.section h2,.feature h3,.path-card h3{letter-spacing:-.015em!important}
+.hero h1{line-height:1.05!important}
+
+/* Links in running text are underlined, so they read as links without relying on color. */
+main p a,main li a,main td a{text-decoration:underline;text-decoration-thickness:2px}
+
+/* Big tap targets: 44px or more for every menu link, button and field. */
+.nav-links a,.ow-links a{font-size:1rem!important;min-height:44px;display:inline-flex;align-items:center;color:#1f2b26!important}
+.menu-button,.ow-menu{min-height:48px!important;min-width:88px;font-size:1.05rem!important;font-weight:800!important;padding:10px 18px!important;border:2px solid #173e34!important;color:#173e34!important}
+.nav-search input,.ow-search input{font-size:1rem!important;min-height:44px}
+.nav-search button,.ow-search button{width:44px!important;height:44px!important}
+.button,button,input[type=submit],select{min-height:48px}
+.footer-links a,.ow-footer-links a{display:inline-flex;align-items:center;min-height:44px;font-size:1rem!important}
+
+/* Strong keyboard focus ring. */
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,summary:focus-visible{outline:3px solid #a04a00!important;outline-offset:3px!important}
+
+/* The Reefer: OhioWeed is The Reefer's Ohio guide. */
+.reefer-bar{background:#16221e;color:#fff;font:600 1rem/1.4 system-ui,-apple-system,'Segoe UI',sans-serif}
+.reefer-bar .rb-in{max-width:1240px;margin:auto;padding:8px 20px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.reefer-bar img{width:32px;height:32px;border-radius:50%;background:#fff;flex:0 0 auto}
+.reefer-bar a{color:#d7f080;font-weight:800;text-decoration:underline;text-decoration-thickness:2px;min-height:44px;display:inline-flex;align-items:center}
+.reefer-foot{border-top:1px solid #ffffff3a;margin-top:26px;padding-top:20px;display:grid;gap:10px;max-width:820px}
+.reefer-foot p{margin:0;color:#eef3ea!important;font-size:1rem!important}
+.reefer-foot strong{color:#fff}
+.reefer-foot a{color:#d7f080!important;font-weight:800;text-decoration:underline}
+@media print{.reefer-bar{display:none}}

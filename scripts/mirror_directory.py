@@ -19,6 +19,8 @@ What it does:
 7. Adds the page-visit counter to every page (scripts/add_counter.py).
 8. Puts a "Skip to main content" link first on every page, ahead of the OhioWeed header
    (scripts/a11y.py).
+9. Marks every page as The Reefer's Ohio guide (a top bar and a footer note linking the-reefer.com)
+   and loads assets/easy-read.css, the larger-text, high-contrast styles (scripts/reefer_family.py).
 """
 import argparse, csv, json, re, shutil, subprocess, sys, tempfile
 from html import escape as html_escape
@@ -31,6 +33,7 @@ sys.path.insert(0, str(HERE))
 from ohio_filter import filter_directory  # noqa: E402
 from add_counter import add_counter  # noqa: E402
 from a11y import finish_site  # noqa: E402
+from reefer_family import finish_site as reefer_family  # noqa: E402
 
 PAGES = ['advocacy', 'ancestry', 'assessment', 'buyer-guide', 'compare', 'expungement', 'intake',
          'knowledge', 'lawmakers', 'locations', 'november-campaign', 'relationships', 'resources',
@@ -377,6 +380,7 @@ def main():
     write_sitemap(args.out.resolve())
     add_counter(args.out.resolve())
     finish_site(args.out.resolve())
+    reefer_family(args.out.resolve())
     print(f'Mirrored {len(PAGES)} Ohio pages into {args.out}')
 
 

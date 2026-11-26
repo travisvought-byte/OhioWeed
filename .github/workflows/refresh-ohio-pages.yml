@@ -47,6 +47,12 @@ jobs:
         working-directory: OhioWeed
         run: python3 scripts/build_key_dates.py
 
+      # The key-dates step rebuilds news.html from events.html; this keeps
+      # The Reefer bar, footer note and easy-reading styles on every page.
+      - name: Keep The Reefer link and easy reading on every page
+        working-directory: OhioWeed
+        run: python3 scripts/reefer_family.py
+
       - name: Commit the refresh
         id: commit
         working-directory: OhioWeed
