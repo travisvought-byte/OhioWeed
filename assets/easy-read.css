@@ -44,4 +44,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
 .reefer-foot p{margin:0;color:#eef3ea!important;font-size:1rem!important}
 .reefer-foot strong{color:#fff}
 .reefer-foot a{color:#d7f080!important;font-weight:800;text-decoration:underline}
+/* The family of free guides, under the footer note (owner direction, November 28, 2026). */
+.reefer-foot+.related{margin:12px 0 0;max-width:820px;color:#eef3ea!important;font-size:1rem!important;line-height:1.7}
+.reefer-foot+.related a{color:#d7f080!important;font-weight:800;text-decoration:underline}
 @media print{.reefer-bar{display:none}}

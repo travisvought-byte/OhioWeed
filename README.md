@@ -10,6 +10,10 @@ A source-linked, Ohio-first guide to cannabis organizations, state location reco
 - events.html — upcoming Ohio events
 - rules.html — plain-language summaries linked to official sources
 
+## The family of free guides
+
+Owner direction, November 28, 2026: the guides link to each other by how visitors identify. `scripts/reefer_family.py` keeps the list (`GUIDES`, `MADE_FOR_YOU`) and, on every refresh, puts the "More free guides" line in every page's footer (all eight guides; a line that comes with a mirrored page is replaced) and fills the "More help made for you" cards on `index.html` and `find.html` between their `<!--made-for-you-->` markers. `resources.html` gets its own "More help made for you" list from the directory build. Inline links: `medical.html` (Mobility Talk), `veteran-grow.html` (Veteran Resource Guide and Mobility Talk), and the mirrored `expungement.html` (Abuse of Office rights in Ohio, Veteran Resource Guide justice page).
+
 ## Data and reuse
 
 See [SITE_DATA.md](SITE_DATA.md) for source attribution, snapshot dates and limits. Directory data is adapted from the Ohio Cannabis Ecosystem Directory under CC BY 4.0 with the required credit. Data is intentionally editorial and unranked. This site does not sell cannabis or publish paid placements in this version.
