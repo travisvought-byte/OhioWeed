@@ -9,6 +9,8 @@ Each page gets:
 - a footer note naming The Reefer and saying the site is free and open source, with an offer to help.
 
 Runs after scripts/a11y.py in the mirror and again at the end of the refresh workflow.
+404.html is served at whatever address was mistyped, at any depth, so its stylesheet and image
+links start at the site root (/assets/...) instead of beside the page.
 Usage: python3 scripts/reefer_family.py [site-folder]
 """
 import re
@@ -16,6 +18,7 @@ import sys
 from pathlib import Path
 
 CSS_LINK = '<link rel="stylesheet" href="assets/easy-read.css">'
+ROOTED = {'404.html'}  # served at any depth, so its links start at the site root
 BAR = ('<div class="reefer-bar" role="region" aria-label="About this site"><div class="rb-in">'
        '<img src="assets/the-reefer/mark-96.png" alt="" width="32" height="32">'
        '<span>OhioWeed is <strong>The Reefer’s Ohio guide</strong>. The Reefer covers every state.</span>'
@@ -27,20 +30,21 @@ FOOT = ('<div class="reefer-foot">'
         'site or group. Travis will help you set it up for free: '
         '<a href="mailto:VeteranHomeGuardians@gmail.com">email VeteranHomeGuardians@gmail.com</a> or '
         '<a href="https://github.com/travisvought-byte/ohioweed">get the code on GitHub</a>.</p></div>')
-OLD = re.compile(r'<link rel="stylesheet" href="assets/easy-read\.css">|<div class="reefer-bar"[^>]*>.*?</div></div>'
+OLD = re.compile(r'<link rel="stylesheet" href="/?assets/easy-read\.css">|<div class="reefer-bar"[^>]*>.*?</div></div>'
                  r'|<div class="reefer-foot">.*?</p></div>', re.S)
 
 
-def finish(page):
+def finish(page, root=''):
     if '</head>' not in page or '<body' not in page:
         return page
     page = OLD.sub('', page)
     if '<meta http-equiv="refresh"' in page:
         return page
-    page = page.replace('</head>', CSS_LINK + '</head>', 1)
+    css_link, bar = (CSS_LINK.replace('"assets/', '"/assets/'), BAR.replace('"assets/', '"/assets/')) if root else (CSS_LINK, BAR)
+    page = page.replace('</head>', css_link + '</head>', 1)
     skip = re.search(r'<a class="a11y-skip"[^>]*>[^<]*</a>', page)
     at = skip.end() if skip else re.search(r'<body\b[^>]*>', page).end()
-    page = page[:at] + BAR + page[at:]
+    page = page[:at] + bar + page[at:]
     end = page.rfind('</footer>')
     if end >= 0:
         # inside the footer's outer wrapper, after its last block
@@ -53,7 +57,7 @@ def finish_site(out: Path) -> int:
     changed = 0
     for path in sorted(out.glob('*.html')):
         text = path.read_text(encoding='utf-8')
-        done = finish(text)
+        done = finish(text, '/' if path.name in ROOTED else '')
         if done != text:
             path.write_text(done, encoding='utf-8')
             changed += 1
